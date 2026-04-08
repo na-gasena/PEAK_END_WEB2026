@@ -2,7 +2,7 @@ const imgVideoYouTube = "C:\Freefile\PROJECT\2026\01_WEB_PKEND\docs\figma\mobile
 function SectionHeading({ className }: {
     className?: string;
 }) {
-    return (<div className={className || "bg-[var(--heading,#fefefe)] content-stretch flex items-center justify-center px-[18px] py-[12px] relative"} data-name="SectionHeading" data-node-id="2005:129"><div className="flex flex-col font-['Shippori_Antique_B1:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[12px] text-[color:var(--keycolor,#deca37)] text-center whitespace-nowrap" data-node-id="2002:115"><p className="leading-[77.45000457763672%]"># trailer</p></div></div>);
+    return (<div className={className || "bg-[var(--heading,#fefefe)] content-stretch flex items-center justify-center px-[18px] py-[12px] relative"} data-name="SectionHeading" data-node-id="2005:129"><div className="flex flex-col justify-center leading-[0] text-[12px] text-center whitespace-nowrap" data-node-id="2002:115"><p className="leading-[77.45000457763672%]"># trailer</p></div></div>);
 }
 export default function IPhone16Trailer() {
     return (<div className="bg-[#ffffeb] relative size-full" data-name="iPhone 16 - trailer" data-node-id="2093:7133"><div className="-translate-x-1/2 absolute h-[194px] left-[calc(50%+0.5px)] top-[80px] w-[360px]" data-development-annotations="YouTubeを埋め込み
