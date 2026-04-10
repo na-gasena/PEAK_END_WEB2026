@@ -1,0 +1,29 @@
+const imgVideoYouTube = "C:/Freefile/PROJECT/2026/01_WEB_PKEND/docs/figma/mobile/images/83e4b10213c562b59c03cc40e897c494e38e25e6.png";
+
+function SectionHeading({ className }: { className?: string }) {
+  return (
+    <div className={className || "bg-[var(--heading,#fefefe)] content-stretch flex items-center justify-center px-[18px] py-[12px] relative"} data-name="SectionHeading" data-node-id="2005:129">
+      <div className="flex flex-col font-['Shippori_Antique_B1:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[12px] text-[color:var(--keycolor,#deca37)] text-center whitespace-nowrap" data-node-id="2002:115">
+        <p className="leading-[77.45000457763672%]"># trailer</p>
+      </div>
+    </div>
+  );
+}
+
+export default function IPhone16Trailer() {
+  return (
+    <div className="bg-[#ffffeb] relative size-full" data-name="iPhone 16 - trailer" data-node-id="2093:7133">
+      <div
+        className="-translate-x-1/2 absolute h-[194px] left-[calc(50%+0.5px)] top-[80px] w-[360px]"
+        data-development-annotations="YouTubeを埋め込み
+
+[https://youtu.be/lBZiY2sbzI0](https://youtu.be/lBZiY2sbzI0)"
+        data-name="Video_YouTube"
+        data-node-id="2034:2574"
+      >
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgVideoYouTube} />
+      </div>
+      <SectionHeading className="-translate-x-1/2 absolute bg-[var(--heading,#fefefe)] content-stretch flex items-center justify-center left-[calc(50%+0.5px)] px-[18px] py-[12px] top-[13px]" />
+    </div>
+  );
+}

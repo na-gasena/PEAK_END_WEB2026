@@ -1,0 +1,90 @@
+const imgBalloon2Yell1 = "C:/Freefile/PROJECT/2026/01_WEB_PKEND/public/images/9f26e389bb5c03d4c8d4dd321811fda7198ad69f.png";
+const imgBalloon1Yell1 = "C:/Freefile/PROJECT/2026/01_WEB_PKEND/public/images/419a1ab367fe684675f6838d44fb632062688400.png";
+const imgRinOnly1 = "C:/Freefile/PROJECT/2026/01_WEB_PKEND/public/images/a8dbf2ee87daebad540de10b28f318f1614d5bc6.png";
+const imgSolaOnly1 = "C:/Freefile/PROJECT/2026/01_WEB_PKEND/public/images/53e55baeaf52d04b7e6cf420b161072cd27578e9.png";
+
+export default function IPhone16About() {
+  return (
+    <div className="bg-[#ffffeb] relative size-full" data-name="iPhone 16 - about" data-node-id="2157:839">
+      <div className="absolute h-[439px] left-[-18px] top-[85px] w-[425px]" data-name="TEXT-ABOUT" data-node-id="2157:841">
+        <div className="absolute font-[family-name:var(--mainfont,'Zen_Kaku_Gothic_New:Medium',sans-serif)] h-[57px] leading-[0] left-[calc(50%-174.5px)] not-italic text-[#deca37] text-[16px] top-[83px] w-[300px] whitespace-pre-wrap" data-development-annotations="テキスト本文を、画像に対して回り込みさせてほしい。" data-node-id="2157:842">
+          <p className="leading-[normal] mb-0">「リン今度さー、</p>
+          <p className="leading-[normal]">
+            {`       宇宙にジャムサンド飛ばさない？」`}
+            <br aria-hidden="true" />
+            <br aria-hidden="true" />
+            <br aria-hidden="true" />
+          </p>
+        </div>
+        <div className="absolute h-[188px] left-[298px] top-[36px] w-[59px]" data-name="Balloon2_yell 1" data-node-id="2157:843">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBalloon2Yell1} />
+        </div>
+        <div className="absolute h-[179px] left-[313px] top-0 w-[80px]" data-name="Balloon1_yell 1" data-node-id="2157:844">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBalloon1Yell1} />
+        </div>
+        <div className="absolute h-[182px] left-[32px] top-[196px] w-[130px]" data-name="Rin_Only 1" data-node-id="2157:845">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRinOnly1} />
+        </div>
+        <div className="absolute h-[191px] left-[201px] top-[187px] w-[137px]" data-name="Sola_Only 1" data-node-id="2157:846">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgSolaOnly1} />
+        </div>
+      </div>
+      <div className="absolute font-[family-name:var(--mainfont,'Zen_Kaku_Gothic_New:Medium',sans-serif)] h-[57px] leading-[0] left-[calc(50%-149.5px)] not-italic text-[#deca37] text-[12px] top-[531px] w-[300px] whitespace-pre-wrap" data-development-annotations="テキスト本文を、画像に対して回り込みさせてほしい。" data-node-id="2157:862">
+        <p className="leading-[normal] mb-0">
+          ソウルから京都にきたリン、沖縄から京都にきたそら、二人は大学で出会い、映画をつくる道を志した。
+          <br aria-hidden="true" />
+          二人はおもしろいことをするのが好きだった。そして、おもしろいことを撮影して笑い合うのが好きだった。
+          <br aria-hidden="true" />
+          ジャムサンドを空に飛ばしたい、フィルムカメラを万引きしてみたい、沖縄でそらのルーツを辿りたい…
+          <br aria-hidden="true" />
+          <br aria-hidden="true" />
+          二人は様々な欲求を映画制作という名目で昇華していく。
+          <br aria-hidden="true" />
+          二人にとって映画は魔法の杖のようなもの。ありとあらゆる形にジャンルを変身させて、そこに身を置き、
+        </p>
+        <p className="leading-[normal] mb-0">
+          自らが映画を謳歌する存在となって、確かにフィルムに焼き付ける。
+          <br aria-hidden="true" />
+          二人はとにかく欲張りに相手を知りたいと願い、
+        </p>
+        <p className="leading-[normal] mb-0">しかし妥協は許さずアイデンティティが</p>
+        <p className="leading-[normal] mb-0">永遠に不確定のまま遅延し続けることを受け入れて、</p>
+        <p className="leading-[normal]">最高に楽しい対話を実践する。</p>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[10px] h-[38px] items-start left-[18px] px-[80px] py-[6px] top-[7px] w-[579px]" data-name="Section_Header_About" data-node-id="2157:847">
+        <div className="absolute content-stretch flex gap-[6px] items-end leading-[normal] left-0 not-italic text-[#deca37] top-0 whitespace-nowrap" data-name="SectionTag" data-node-id="2157:848">
+          <p className="font-['Londrina_Solid:Regular',sans-serif] relative shrink-0 text-[32px]" data-node-id="I2157:848;2012:154">
+            ABOUT
+          </p>
+          <div className="content-stretch flex gap-[6px] items-center py-[2px] relative shrink-0 text-[24px]" data-node-id="I2157:848;2012:184">
+            <p className="font-['Londrina_Solid:Light',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:157">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Thin',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:158">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Black',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:159">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Regular',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:160">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Light',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:161">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Thin',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:245">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Black',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:246">
+              ABOUT
+            </p>
+            <p className="font-['Londrina_Solid:Regular',sans-serif] relative shrink-0" data-node-id="I2157:848;2012:247">
+              ABOUT
+            </p>
+          </div>
+        </div>
+        <div className="bg-[rgba(217,107,157,0.64)] h-[25px] shrink-0 w-[302px]" data-node-id="2157:849" />
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,17 @@
+<frame id="2157:839" name="iPhone 16 - about" x="4513" y="-1370" width="393" height="848">
+  <rounded-rectangle id="2157:840" name="BG_Yellow 2" x="0" y="-704" width="393" height="1449" hidden="true" />
+  <frame id="2157:841" name="TEXT-ABOUT" x="-18" y="85" width="425" height="439">
+    <text id="2157:842" name="「リン今度さー、 宇宙にジャムサンド飛ばさない？」  " x="38" y="83" width="300" height="57" />
+    <rounded-rectangle id="2157:843" name="Balloon2_yell 1" x="298" y="36" width="59" height="188" />
+    <rounded-rectangle id="2157:844" name="Balloon1_yell 1" x="313" y="0" width="80" height="179" />
+    <rounded-rectangle id="2157:845" name="Rin_Only 1" x="32" y="196" width="130" height="182" />
+    <rounded-rectangle id="2157:846" name="Sola_Only 1" x="201" y="187" width="137" height="191" />
+  </frame>
+  <text id="2157:862" name="ソウルから京都にきたリン、沖縄から京都にきたそら、二人は大学で出会い、映画をつくる道を志した。 二人はおもしろいことをするのが好きだった。そして、おもしろいことを撮影して笑い合うのが好きだった。 ジャムサンドを空に飛ばしたい、フィルムカメラを万引きしてみたい、沖縄でそらのルーツを辿りたい…  二人は様々な欲求を映画制作という名目で昇華していく。 二人にとって映画は魔法の杖のようなもの。ありとあらゆる形にジャンルを変身させて、そこに身を置き、 自らが映画を謳歌する存在となって、確かにフィルムに焼き付ける。 二人はとにかく欲張りに相手を知りたいと願い、 しかし妥協は許さずアイデンティティが 永遠に不確定のまま遅延し続けることを受け入れて、 最高に楽しい対話を実践する。" x="47" y="531" width="300" height="57" />
+  <frame id="2157:847" name="Section_Header_About" x="18" y="7" width="579" height="38">
+    <instance id="2157:848" name="SectionTag" x="0" y="0" width="579" height="38" />
+    <rounded-rectangle id="2157:849" name="Rectangle 9" x="80" y="6" width="302" height="25" />
+  </frame>
+  <ellipse id="2157:850" name="Ellipse 2" x="0" y="326" width="225" height="225" hidden="true" />
+  <ellipse id="2157:851" name="Ellipse 1" x="165" y="296" width="225" height="225" hidden="true" />
+</frame>
