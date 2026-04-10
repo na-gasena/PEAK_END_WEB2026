@@ -1,0 +1,111 @@
+---
+const imgPolygon3      = "/images/fca6b6ef35474a8da905954f4c0b236dfdcb97b6.svg";
+const imgLine12        = "/images/722be691ab76c9fbc04f5aef3dc97a1053dc16bb.svg";
+const imgTitlePeakend1 = "/images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png";
+const imgSolaIcon2     = "/images/9a0db4737d90db51fd68f7cb1eb5ed75b077fc51.png";
+const imgRinProf1      = "/images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png";
+
+// Figmaアノテーション: item1→News1オーバーレイ(modal-11), item2→News2(modal-12), item3→News3(modal-13)
+const newsItems = [
+  {
+    date:    "2026年4月9日(木)",
+    text:    "Webサイトをリニューアルしました",
+    modal:   "modal-11",
+  },
+  {
+    date:    "2026年3月16日（月）",
+    text:    "イメージフォーラム & YouTubeにて「特報」予告(…)",
+    modal:   "modal-12",
+  },
+  {
+    date:    "2026年3月16日（月）",
+    text:    "『PEAK END』 劇場公開決定 Image Forum、出町座 他",
+    modal:   "modal-13",
+  },
+];
+---
+
+<div class="bg-[var(--bgcolor,#ffffeb)] w-full flex flex-col" data-name="iPhone 16 - NewsList" data-node-id="2093:7135">
+
+  <!-- ヘッダー帯 + ロゴ -->
+  <div class="relative h-[69px] w-full bg-[#deca37] shrink-0">
+    <div class="absolute h-[69px] left-0 top-0 w-[216px]" data-name="Title_PEAKEND 1">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgTitlePeakend1} />
+    </div>
+  </div>
+
+  <!-- #news タグ -->
+  <div class="flex justify-center py-[12px] shrink-0">
+    <div class="bg-[var(--heading,#fefefe)] flex items-center justify-center rounded-[2px] px-[2px]">
+      <p class="font-['Londrina_Solid',sans-serif] leading-normal text-[18px] text-[color:var(--keycolor,#deca37)] text-center"># news</p>
+    </div>
+  </div>
+
+  <!-- ニュースリスト本体 -->
+  <div
+    class="flex flex-col gap-[20px] items-stretch w-full px-[20px] pb-[24px]"
+    data-development-annotations="今後、HeadlessCMSにて項目、本文を追加していくと、最新のものが一番上に来るようにして追加されていく。"
+    data-name="NewsList"
+    data-node-id="2037:5859"
+  >
+    <!-- 上ボーダー -->
+    <div class="h-px w-full relative">
+      <img alt="" class="block w-full h-full object-cover" src={imgLine12} />
+    </div>
+
+    {newsItems.map((item) => (
+      <div class="flex flex-col w-full" data-name="News">
+
+        <!-- 日付タグ（右寄せ） -->
+        <div class="flex justify-end mb-[4px]">
+          <div class="bg-[#deca37] flex items-center justify-center px-[16px] py-[2px] rounded-[4px]">
+            <p class="font-medium leading-normal text-[12px] text-white whitespace-nowrap">
+              {item.date}
+            </p>
+          </div>
+        </div>
+
+        <!-- アイコン + 吹き出し行（横並び・flex） -->
+        <div class="flex gap-[10px] items-start w-full">
+
+          <!-- SolaIcon -->
+          <div class="relative shrink-0 size-[42px]" data-name="SolaIcon 2">
+            <img alt="" class="absolute inset-0 object-cover pointer-events-none size-full rounded-full" src={imgSolaIcon2} />
+          </div>
+
+          <!-- 吹き出し本体（矢印 + ボタン） -->
+          <div class="relative flex-1 min-w-0 mt-[2px]">
+            <!-- 吹き出し矢印（左側） -->
+            <div class="absolute left-[-11px] top-[8px] w-[14px] h-[20px] overflow-hidden">
+              <img alt="" class="absolute top-[0px] left-[2px] w-full h-full rotate-[-52deg] object-contain" src={imgPolygon3} />
+            </div>
+
+            <!-- タップでNewsページを開くボタン -->
+            <button
+              type="button"
+              class="bg-[#deca37] flex items-center justify-start w-full px-[15px] py-[10px] rounded-[16px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity border-none text-left"
+              onclick={`window.openModal('${item.modal}')`}
+              data-interaction-annotations={`タップするとオーバーレイ(${item.modal})`}
+            >
+              <p class="decoration-solid font-bold text-[13px] text-white underline leading-[1.4] break-words">
+                {item.text}
+              </p>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    ))}
+
+    <!-- 下ボーダー + Rinアイコン -->
+    <div class="flex flex-col items-center w-full gap-[8px]">
+      <div class="h-px w-full relative">
+        <img alt="" class="block w-full h-full object-cover" src={imgLine12} />
+      </div>
+      <div class="relative rounded-[10px] size-[45px]">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[10px] size-full" src={imgRinProf1} />
+      </div>
+    </div>
+
+  </div>
+</div>

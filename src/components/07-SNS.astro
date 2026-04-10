@@ -1,0 +1,58 @@
+---
+const imgImage12 = "/images/da2e3b8d96025edbb33affa296eb5d667d8a079b.png";
+const imgComIdSu2WtCoW02 = "/images/47bef2b53c17056bf9ebfa528565751c89d25c97.png";
+const imgComIdSu2WtCoW3 = "/images/2a0b7e2c7705210f73b183afb4b434421405f796.png";
+const imgComIdSu2WtCoW4 = "/images/a6132af911c4122aef1a63bc26bbcba558c598fb.png";
+const imgComIdSu2WtCoW5 = "/images/8d3db474c1a814f8701e89992609a2c3b56bee61.png";
+
+const snsIcons = [
+  { href: "https://eiga.com/movie/105830/", img: imgComIdSu2WtCoW02, label: "映画.com" },
+  { href: "https://x.com/PEAK_END_", img: imgComIdSu2WtCoW3, label: "X (Twitter)" },
+  { href: "https://www.instagram.com/peak__end__/", img: imgComIdSu2WtCoW4, label: "Instagram" },
+  { href: "https://filmarks.com/movies/123647", img: imgComIdSu2WtCoW5, label: "Filmarks" },
+];
+---
+
+<section class="bg-[#ffffeb] relative size-full max-w-120 mx-auto">
+  <div class="absolute border-4 border-[#f1f1f1] border-solid h-[141px] left-[146px] top-[230px] w-[250px]">
+    <img alt="" class="absolute inset-0 max-w-none object-cover opacity-80 pointer-events-none size-full" src={imgImage12} />
+  </div>
+
+  <nav class="-translate-x-1/2 absolute content-stretch cursor-pointer flex items-center left-[calc(50%+0.5px)] top-[87px]">
+    {snsIcons.map(({ href, img, label }) => (
+      <a
+        class="content-stretch flex gap-[10px] items-center p-[34px] relative size-[99px] cursor-pointer"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+      >
+        <div class="absolute contents left-[-0.03px] top-0">
+          <div class="absolute contents left-[0.51px] mix-blend-screen top-0"></div>
+          <div class="absolute border border-[#deca37] border-solid left-[5.53px] size-[85.867px] top-[6.57px]"></div>
+          <div class="absolute border-[#deca37] border-[0.5px] border-solid left-[-0.03px] size-[99px] top-0"></div>
+        </div>
+        <div class="relative size-[32px]">
+          <img alt={label} class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img} />
+        </div>
+      </a>
+    ))}
+  </nav>
+
+  <header class="absolute content-stretch flex flex-col gap-[10px] h-[38px] items-start left-[18px] px-[53px] py-[6px] top-[14px] w-[383px]">
+    <div class="absolute content-stretch flex gap-[6px] items-end left-0 top-0 whitespace-nowrap">
+      <p class="text-[32px]">SNS</p>
+      <div class="content-stretch flex gap-[6px] items-center py-[2px] text-[24px]">
+        <p>SNS</p>
+        <p>SNS</p>
+        <p>SNS</p>
+        <p>SNS</p>
+        <p>SNS</p>
+        <p>SNS</p>
+        <p>SNS</p>
+        <p>SNS</p>
+      </div>
+    </div>
+    <div class="bg-[rgba(217,107,157,0.64)] h-[25px] w-[329px]"></div>
+  </header>
+</section>

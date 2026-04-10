@@ -1,0 +1,102 @@
+---
+const imgLine11 = "/images/722be691ab76c9fbc04f5aef3dc97a1053dc16bb.svg";
+const imgPolygon3 = "/images/fca6b6ef35474a8da905954f4c0b236dfdcb97b6.svg";
+const imgSolaIcon2 = "/images/9a0db4737d90db51fd68f7cb1eb5ed75b077fc51.png";
+
+const items = [
+  {
+    date: "2026年4月9日(木)",
+    text: "Webサイトをリニューアルしました",
+    modal: "modal-11"
+  },
+  {
+    date: "2026年3月16日（月）",
+    text: "イメージフォーラム & YouTubeにて「特報」予告(…)",
+    modal: "modal-12"
+  },
+  {
+    date: "2026年3月16日（月）",
+    text: "『PEAK END』 劇場公開決定 Image Forum、出町座 他",
+    modal: "modal-13"
+  }
+];
+---
+
+<div class="bg-[#ffffeb] relative w-full h-auto flex flex-col items-center pt-[13px] pb-[36px] px-[20px]" data-name="iPhone 16 - news" data-node-id="2093:7134">
+  
+  <!-- News Section Heading -->
+  <div class="bg-[var(--heading,#fefefe)] flex items-center justify-center px-[18px] py-[12px] mb-[28px]" data-name="SectionHeading" data-node-id="2037:6256">
+    <div class="flex flex-col font-['Londrina_Solid',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[20px] text-[#deca37] text-center whitespace-nowrap">
+      <p class="leading-[77.4%]"># news</p>
+    </div>
+  </div>
+
+  <!-- Content Container Wrapper (lines up with 20px margins originally) -->
+  <div class="flex flex-col items-center w-full max-w-[400px]">
+    
+    <!-- Top Divider -->
+    <div class="h-px w-full relative mb-[16px]">
+      <img alt="" class="block w-full h-full object-cover" src={imgLine11}/>
+    </div>
+
+    <!-- News Items Container -->
+    <div class="flex flex-col gap-[20px] w-full mb-[16px]">
+      
+      {items.map(item => (
+        <div class="flex flex-col relative w-full items-end gap-[4px]">
+          
+          <!-- Date Label -->
+          <div class="bg-[#deca37] flex items-center justify-center px-[16px] py-[3px] rounded-[4px]">
+            <p class="font-[family-name:var(--mainfont,'Zen_Kaku_Gothic_New:Medium',sans-serif)] leading-[normal] not-italic text-[12px] text-white whitespace-nowrap">
+              {item.date}
+            </p>
+          </div>
+          
+          <!-- Bubble Row -->
+          <div class="flex gap-[10px] items-start w-full relative">
+            <!-- Icon -->
+            <div class="relative shrink-0 size-[42px]">
+              <img alt="" class="absolute inset-0 object-cover w-full h-full rounded-full" src={imgSolaIcon2}/>
+            </div>
+            
+            <!-- Bubble Structure -->
+            <div class="relative flex-1 min-w-0 mt-[2px]">
+              <!-- Triangle Polygon (Pointing left) -->
+              <div class="absolute left-[-11px] top-[8px] w-[14px] h-[20px] overflow-hidden">
+                <img alt="" class="absolute top-[0px] left-[2px] w-full h-full rotate-[-52deg] object-contain" src={imgPolygon3}/>
+              </div>
+              
+              <!-- Bubble Content -->
+              <button 
+                type="button" 
+                class="bg-[#deca37] flex items-center justify-start w-fit max-w-full px-[15px] py-[10px] rounded-[24px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity border-none text-left" 
+                onclick={`window.openModal('${item.modal}')`}
+              >
+                <p class="font-[family-name:var(--mainfont,'Zen_Kaku_Gothic_New:Bold',sans-serif)] leading-[1.3] text-[12px] text-white font-bold underline break-words">
+                  {item.text}
+                </p>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Bottom Divider -->
+    <div class="h-px w-full relative mb-[30px]">
+      <img alt="" class="block w-full h-full object-cover" src={imgLine11}/>
+    </div>
+
+  </div>
+
+  <!-- View More Button -->
+  <button type="button" class="bg-[#deca37] flex items-center justify-center px-[12px] py-[8px] cursor-pointer hover:opacity-80 transition-opacity active:opacity-60 rounded-[4px] border-none" data-name="SectionHeading" data-node-id="2037:6257" onclick="window.openModal('modal-10')">
+    <div class="flex gap-[4px] font-['Shippori_Antique_B1:Regular',sans-serif] items-center justify-center not-italic relative shrink-0 text-[12px] text-white whitespace-nowrap">
+      <p class="m-0 leading-none">+ and more...</p>
+      <p class="m-0 leading-none">→</p>
+    </div>
+  </button>
+  
+</div>

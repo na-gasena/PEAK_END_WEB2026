@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@source "../**/*.astro";
+
+:root {
+  --font-zen: "Zen Kaku Gothic New", sans-serif;
+  --font-londrina: "Londrina Solid", display;
+  --font-klee: "Klee One", cursive;
+
+  /* Color variables based on Tailwind usage or design */
+  --bgcolor: #ffffeb;
+  --keycolor: #deca37;
+  --heading: #fefefe;
+}
+
+body {
+  font-family: var(--font-zen);
+  background-color: var(--bgcolor);
+  color: #333333;
+}
+
+/* Ticker Animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker {
+  animation: ticker 15s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* Custom mask-position & mask-size handling if needed */
+
+/* モーダル表示中は背景スクロールを禁止 */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* テキストボックス背景: タイリングで繰り返す（伸びても scale せず repeat） */
+.card-textbox {
+  background-image: url('/images/5b4f3e62db1044de81f479951e83863a662235e5.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+/* White outline for text readability over background images */
+.text-outline-white {
+  text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
+}
+
+/* Menu modal: blur backdrop */
+#modal-menu::backdrop {
+  backdrop-filter: blur(8px) brightness(0.85);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* News detail modal: same bright blur backdrop as KotobaComment / MemberDetail */
+#modal-11::backdrop,
+#modal-12::backdrop,
+#modal-13::backdrop {
+  backdrop-filter: blur(10px) brightness(1);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Kotoba comment & Member detail modal: bright blur backdrop instead of dark overlay */
+#modal-14::backdrop,
+#modal-15::backdrop,
+#modal-16::backdrop,
+#modal-17::backdrop,
+#modal-18::backdrop,
+#modal-19::backdrop,
+#modal-20::backdrop,
+#modal-21::backdrop,
+#modal-22::backdrop,
+#modal-23::backdrop,
+#modal-24::backdrop,
+#modal-25::backdrop,
+#modal-26::backdrop,
+#modal-27::backdrop {
+  backdrop-filter: blur(10px) brightness(1);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Modal Fade-in/out Transitions using modern CSS */
+dialog {
+  opacity: 0;
+  /* Transform for a slight floating effect on open */
+  transform: translateY(10px);
+  transition: 
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    display 0.3s ease-out allow-discrete,
+    overlay 0.3s ease-out allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Also animate the backdrop */
+dialog::backdrop {
+  opacity: 0;
+  transition: opacity 0.3s ease-out, overlay 0.3s ease-out allow-discrete;
+}
+
+dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    opacity: 0;
+  }
+}

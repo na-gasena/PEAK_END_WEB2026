@@ -1,0 +1,104 @@
+---
+// import { imgLine10 } from './svg-97hxq'; // TODO: SVG
+const imgLine10 = "";
+const imgRinProf1 = "/images/5dfbf4105817b96213ca384b903643d993d6c352.png";
+const imgRinProf2 = "/images/798c760295b7477d67c180f0207dde6e02e2fc3b.png";
+const imgRinProf3 = "/images/8ffd3d0d428dccee377aff2ec8b1f7b6da6334ac.png";
+const imgRinProf4 = "/images/867091a57362fee5872cc94cb1eea5a3b47ed103.png";
+const imgRinProf5 = "/images/a330662bbbebed137aec2812be137b4ee9bb4267.png";
+
+const members = [
+  { img: imgRinProf1, role: "Dirctor / Actor : ", name: "シン・チェリン" },
+  { img: imgRinProf2, role: "Actor : ", name: "伊丹 そら" },
+  { img: imgRinProf3, role: "Cinematography : ", name: "清水歩夢" },
+  { img: imgRinProf4, role: "Editor : ", name: "西尾千裕" },
+  { img: imgRinProf5, role: "Sound Recording:", name: "キム・スビン" },
+];
+---
+
+<section class="bg-[#ffffeb] relative size-full max-w-120 mx-auto">
+
+  <!-- セクションヘッダー -->
+  <header class="absolute content-stretch flex flex-col gap-[10px] h-[38px] items-start left-[18px] px-[107px] py-[6px] top-[9px] w-[758px]">
+    <div class="absolute content-stretch flex gap-[6px] items-end left-0 top-0 whitespace-nowrap">
+      <p class="text-[32px]">CREDITS</p>
+      <div class="content-stretch flex gap-[6px] items-center py-[2px] text-[24px]">
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+        <p>CREDITS</p>
+      </div>
+    </div>
+    <div class="bg-[rgba(217,107,157,0.64)] h-[25px] w-[275px]"></div>
+  </header>
+
+  <!-- 監督・スタッフクレジットテキスト -->
+  <div class="-translate-x-1/2 absolute content-stretch flex flex-col gap-[12px] items-center left-1/2 top-[68px] w-[423px]">
+    <div class="content-stretch flex flex-col gap-[14px] items-start w-[326px]">
+      <p class="h-[27px] text-[14px] text-center w-full">監督：シン・チェリン</p>
+      <div class="content-stretch flex flex-col gap-[13px] items-center w-full">
+        <div class="h-0 relative w-[280px]">
+          <div class="absolute inset-[-1px_0_0_0]">
+            {imgLine10 && <img alt="" class="block max-w-none size-full" src={imgLine10} />}
+          </div>
+        </div>
+        <div class="h-[84px] leading-[0] text-[12px] text-center whitespace-pre-wrap">
+          <p class="mb-0">出演：シン・チェリン　伊丹そら</p>
+          <p class="mb-0">撮影：清水歩夢　西尾千裕</p>
+          <p class="mb-0">録音：キム・スビン</p>
+          <p class="mb-0">編集：西尾千裕</p>
+          <p class="mb-0">製作：Team PEAK END </p>
+          <p>&nbsp;</p>
+        </div>
+        <div class="h-0 relative w-[280px]">
+          <div class="absolute inset-[-1px_0_0_0]">
+            {imgLine10 && <img alt="" class="block max-w-none size-full" src={imgLine10} />}
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="h-[34px] text-[10px] text-center">2025年｜日本｜120分｜言語:日本語、韓国語｜</p>
+  </div>
+
+  <!-- 黄色背景帯 -->
+  <div class="absolute bg-[#deca37] h-[675px] left-0 rounded-[9px] top-[286px] w-[393px]"></div>
+
+  <!-- Members セクション見出し -->
+  <div class="-translate-x-1/2 absolute bg-[var(--heading,#fefefe)] content-stretch flex items-center justify-center left-[calc(50%+0.5px)] px-[4px] py-[5px] top-[299px]">
+    <div class="flex flex-col justify-center leading-[0] text-[12px] text-center whitespace-nowrap">
+      <p class="leading-[77.45000457763672%]"># members</p>
+    </div>
+  </div>
+
+  <!-- メンバーカードグリッド -->
+  <ul class="-translate-x-1/2 absolute grid grid-cols-2 left-[calc(50%+0.5px)] top-[347px] list-none m-0 p-0">
+    {members.map(({ img, role, name }) => (
+      <li class="content-stretch flex flex-col gap-[10px] items-start p-[9px] relative size-[196px]">
+        <div class="absolute border-[0.5px] border-solid border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
+          <div class="relative size-[170px]">
+            <img alt={name} class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img} />
+          </div>
+        </div>
+        <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px]">
+          <div class="leading-[0] text-[12px] whitespace-nowrap">
+            <p class="mb-0 whitespace-pre">{role}</p>
+            <p class="whitespace-pre">{name}</p>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+
+  <!-- フッター著作権表記 -->
+  <footer class="-translate-x-1/2 absolute h-[74px] leading-[0] left-[calc(50%+0.5px)] text-[10px] text-center top-[969px] w-[252px] whitespace-pre-wrap">
+    <p class="mb-0">&nbsp;</p>
+    <p class="mb-0"> boid/VOICE OF GHOST </p>
+    <p class="mb-0"> </p>
+    <p>©PEAK END</p>
+  </footer>
+
+</section>

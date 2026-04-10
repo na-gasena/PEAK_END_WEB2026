@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Main from '../components/mobile/Main.astro';
+import Trailer from '../components/mobile/Trailer.astro';
+import News from '../components/mobile/News.astro';
+import About from '../components/mobile/About.astro';
+import Kotoba from '../components/mobile/Kotoba.astro';
+import Theaters from '../components/mobile/Theaters.astro';
+import SNS from '../components/mobile/SNS.astro';
+import Credits from '../components/mobile/Credits.astro';
+
+// Old detail modals
+import MenuScreen from '../components/09-Menu.astro';
+import Comp10 from '../components/10-NewsList.astro';
+import Comp11 from '../components/11-NewsDetail1.astro';
+import Comp12 from '../components/12-NewsDetail2.astro';
+import Comp13 from '../components/13-NewsDetail3.astro';
+import Comp14 from '../components/14-KotobaComment-北小路隆志.astro';
+import Comp15 from '../components/15-KotobaComment-青山太郎.astro';
+import Comp16 from '../components/16-KotobaComment-月永理絵.astro';
+import Comp17 from '../components/17-KotobaComment-犬童一心.astro';
+import Comp18 from '../components/18-KotobaComment-イラン.astro';
+import Comp19 from '../components/19-KotobaComment-布施琳太郎.astro';
+import Comp20 from '../components/20-KotobaComment-岨手由貴子.astro';
+import Comp21 from '../components/21-KotobaComment-荒木啓子.astro';
+import Comp22 from '../components/22-KotobaComment-秦岳志.astro';
+import Comp23 from '../components/23-MemberDetail-シン・チェリン.astro';
+import Comp24 from '../components/24-MemberDetail-清水歩夢.astro';
+import Comp25 from '../components/25-MemberDetail-キムスビン.astro';
+import Comp26 from '../components/26-MemberDetail-伊丹そら.astro';
+import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
+---
+
+<Layout title="PEAK END">
+  <!--
+    Fixed Header: transform() 配下では sticky/fixed がビューポート固定にならないため、
+    スケール対象の #mobile-main の外に置き、JS で left/transform を同期する。
+  -->
+  <div id="sticky-header" class="fixed top-0 z-[100] h-0" style="width:393px; transform-origin:top left;">
+    <div class="absolute left-0 top-[16px] w-[216px] h-[69px]">
+      <button id="scroll-top-btn" class="w-full h-full cursor-pointer bg-transparent border-none p-0" aria-label="トップに戻る">
+        <img alt="Header_PEAKEND" class="w-full h-full object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]" src="/images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png"/>
+      </button>
+    </div>
+    <button id="menu-icon-btn" class="absolute right-[17px] top-[35px] size-[32px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity bg-transparent border-none p-0" aria-label="メニューを開く" data-name="MenuIcon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-hidden="true">
+        <rect x="4" y="7"    width="24" height="3" rx="1.5" fill="#333333"/>
+        <rect x="4" y="14.5" width="24" height="3" rx="1.5" fill="#333333"/>
+        <rect x="4" y="22"   width="24" height="3" rx="1.5" fill="#333333"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Responsive Mobile Scale Wrapper -->
+  <div id="mobile-outer" class="w-full overflow-hidden">
+    <main id="mobile-main" class="relative bg-[#ffffeb] flex flex-col shadow-2xl shrink-0" style="width:393px; transform-origin:top left;">
+      <div id="section-main"><Main /></div>
+      <div id="section-trailer"><Trailer /></div>
+      <div id="section-news"><News /></div>
+      <div id="section-about"><About /></div>
+      <div id="section-kotoba"><Kotoba /></div>
+      <div id="section-theaters"><Theaters /></div>
+      <div id="section-sns"><SNS /></div>
+      <div id="section-credits"><Credits /></div>
+    </main>
+  </div>
+
+  <!-- Overlay / Modal Wrappers -->
+  <dialog id="modal-menu" class="w-full h-full max-w-[393px] m-auto p-0 bg-transparent border-none open:block overflow-hidden">
+    <MenuScreen />
+  </dialog>
+  <dialog id="modal-10" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:flex items-center justify-center">
+    <div class="relative w-full">
+      <Comp10 />
+      <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+    </div>
+  </dialog>
+  <dialog id="modal-11" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp11 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-12" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp12 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-13" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp13 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-14" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp14 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-15" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp15 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-16" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp16 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-17" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp17 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-18" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp18 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-19" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp19 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-20" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp20 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-21" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp21 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-22" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp22 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-23" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp23 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-24" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp24 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-25" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp25 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-26" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp26 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+  <dialog id="modal-27" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp27 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
+
+  <script>
+    // Responsive scale: fit 393px design to viewport width
+    const DESIGN_WIDTH = 393;
+    function applyMobileScale() {
+      const outer = document.getElementById('mobile-outer');
+      const main = document.getElementById('mobile-main');
+      const header = document.getElementById('sticky-header');
+      if (!outer || !main) return;
+      const vw = outer.clientWidth;
+      if (vw >= DESIGN_WIDTH) {
+        // Desktop: show at 1:1, center with auto margin
+        main.style.transform = 'none';
+        main.style.marginLeft = 'auto';
+        main.style.marginRight = 'auto';
+        outer.style.height = '';
+        // ヘッダーも中央に合わせる
+        if (header) {
+          header.style.transform = 'none';
+          header.style.left = Math.max(0, Math.floor((vw - DESIGN_WIDTH) / 2)) + 'px';
+        }
+      } else {
+        // Mobile: scale from top-left to fill edge-to-edge
+        const scale = vw / DESIGN_WIDTH;
+        main.style.transform = `scale(${scale})`;
+        main.style.marginLeft = '0';
+        main.style.marginRight = '0';
+        // Collapse outer height to match scaled content
+        outer.style.height = (main.scrollHeight * scale) + 'px';
+        // ヘッダーも同じ倍率でスケール
+        if (header) {
+          header.style.transform = `scale(${scale})`;
+          header.style.left = '0';
+        }
+      }
+    }
+    applyMobileScale();
+    window.addEventListener('resize', applyMobileScale);
+
+    // Scroll to a section (accounts for scale transform)
+    window.scrollToSection = function (sectionId) {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+      const outer = document.getElementById('mobile-outer');
+      const main = document.getElementById('mobile-main');
+      if (!outer || !main) { section.scrollIntoView({ behavior: 'smooth' }); return; }
+      const vw = outer.clientWidth;
+      const scale = vw >= 393 ? 1 : vw / 393;
+      const sectionTop = section.offsetTop * scale;
+      window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+      document.body.classList.remove('modal-open');
+    };
+
+    // Utility to open dialogs (+ scroll lock)
+    window.openModal = function (id) {
+      const dialog = document.getElementById(id);
+      if (dialog) {
+        dialog.showModal();
+        document.body.classList.add('modal-open');
+      }
+    };
+
+    // モーダルが閉じたら、他に開いているものがなければスクロールロック解除
+    document.querySelectorAll('dialog').forEach(d => {
+      d.addEventListener('close', () => {
+        if (!document.querySelector('dialog[open]')) {
+          document.body.classList.remove('modal-open');
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyMobileScale();
+
+      // Scroll to top with smooth animation
+      const scrollTopBtn = document.getElementById('scroll-top-btn');
+      if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // Setup menu icon click (both sticky header and any inside components)
+      document.querySelectorAll('[data-name="MenuIcon"]').forEach(icon => {
+        icon.style.cursor = 'pointer';
+        icon.addEventListener('click', () => window.openModal('modal-menu'));
+      });
+      // Close menu, NewsList / news detail modals
+      ['modal-menu','modal-10','modal-11','modal-12','modal-13'].forEach(id => {
+        const d = document.getElementById(id);
+        if (!d) return;
+        d.addEventListener('click', e => {
+          const card = d.querySelector(':scope > div');
+          // dialog(背景) または padding/gap等の背景色がないコンテナ自身のクリックなら閉じる
+          if (e.target === d || e.target === card) {
+            setTimeout(() => d.close(), 0);
+          }
+        });
+      });
+      // Close kotoba comment modals
+      ['modal-14','modal-15','modal-16','modal-17','modal-18','modal-19','modal-20','modal-21','modal-22'].forEach(id => {
+        const d = document.getElementById(id);
+        if (!d) return;
+        d.addEventListener('click', e => {
+          const card = d.querySelector(':scope > div');
+          if (e.target === d || e.target === card) {
+            setTimeout(() => d.close(), 0);
+          }
+        });
+      });
+      // Close member detail modals
+      ['modal-23','modal-24','modal-25','modal-26','modal-27'].forEach(id => {
+        const d = document.getElementById(id);
+        if (!d) return;
+        d.addEventListener('click', e => {
+          const card = d.querySelector(':scope > div');
+          if (e.target === d || e.target === card) {
+            setTimeout(() => d.close(), 0);
+          }
+        });
+      });
+    });
+  </script>
+</Layout>

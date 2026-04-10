@@ -1,0 +1,91 @@
+---
+// import { imgLine3, imgLine4 } from './svg-aqv71'; // TODO: SVG
+const imgLine3 = "";
+const imgLine4 = "";
+const imgTable = "./images/ab2ba9388f55027d4323199d2bb8617722e4992d.png";
+
+const theaters = [
+  { area: "東京都", name: "シアター・イメージフォーラム", date: "2026.6.13 ～" },
+  { area: "京都府", name: "出町座",                       date: "2026.6.26 ～" },
+  { area: "大阪府", name: "シネ  ・ヌーヴォ",             date: "2026.6.27 ～" },
+  { area: "沖縄県", name: "桜坂劇場",                     date: "2026.7.18 ～" },
+  { area: "愛知県", name: "キネマ・ノイ",                  date: "近日発表"     },
+  { area: "…",     name: "…",                            date: "順次全国"     },
+];
+---
+
+<section class="bg-[#ffffeb] relative size-full">
+  <div class="max-w-120 mx-auto">
+
+    <!-- Section Header -->
+    <div class="absolute content-stretch flex flex-col gap-[10px] h-[38px] items-start left-[18px] px-[126px] py-[6px] top-[13px] w-[888px]">
+      <div class="absolute content-stretch flex gap-[6px] items-end left-0 top-0 whitespace-nowrap">
+        <p class="text-[32px]">THEATERS</p>
+        <div class="content-stretch flex gap-[6px] items-center py-[2px] text-[24px]">
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+          <p>THEATERS</p>
+        </div>
+      </div>
+      <div class="bg-[rgba(217,107,157,0.64)] h-[25px] w-[258px]"></div>
+    </div>
+
+    <!-- Table -->
+    <div class="-translate-x-1/2 absolute content-stretch flex flex-col gap-[7px] h-[272px] items-start left-[calc(50%+0.5px)] py-[20px] top-[89px] w-[394px]">
+      <!-- Background image -->
+      <div class="absolute inset-0 opacity-87 overflow-hidden pointer-events-none">
+        <img alt="" class="absolute h-[99.26%] left-[-10.91%] max-w-none top-[0.37%] w-[121.83%]" src={imgTable} />
+      </div>
+
+      <!-- Header row (Frame component inlined) -->
+      <div class="content-stretch flex flex-col gap-[7px] items-center relative w-full">
+        <div class="content-stretch flex items-center justify-between text-[12px] text-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-[350px]">
+          <div class="flex flex-col justify-center leading-[0] text-center w-[57px]">
+            <p>地域</p>
+          </div>
+          <p class="w-[174px]">劇場名</p>
+          <p class="w-[72px]">公開日</p>
+        </div>
+        <div class="flex h-[2px] items-center justify-center" style="--transform-inner-width: 0; --transform-inner-height: 0">
+          <div class="flex-none rotate-[0.29deg] w-full">
+            <div class="h-0 relative">
+              <div class="absolute inset-[-1px_0_0_0]">
+                <img alt="" class="block max-w-none size-full" src={imgLine3} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data rows -->
+      <div class="content-stretch flex flex-col gap-[7px] items-center w-full">
+        {theaters.map((row) => (
+          <div class="content-stretch flex flex-col gap-[7px] items-center w-full">
+            <div class="content-stretch flex items-center justify-between text-[12px] text-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] w-[350px]">
+              <div class="flex flex-col justify-center leading-[0] text-center w-[57px]">
+                <p>{row.area}</p>
+              </div>
+              <p class="w-[174px] whitespace-pre-wrap">{row.name}</p>
+              <p class="w-[72px]">{row.date}</p>
+            </div>
+            <div class="flex h-[2px] items-center justify-center w-full" style="--transform-inner-width: 0; --transform-inner-height: 0">
+              <div class="flex-none rotate-[0.29deg] w-full">
+                <div class="h-0 relative">
+                  <div class="absolute inset-[-1px_0_0_0]">
+                    <img alt="" class="block max-w-none size-full" src={imgLine4} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

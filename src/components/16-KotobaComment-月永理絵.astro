@@ -1,0 +1,39 @@
+---
+const imgLine12 = "/images/722be691ab76c9fbc04f5aef3dc97a1053dc16bb.svg";
+const imgPhoto = "/images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png";
+const imgTextBox = "/images/5b4f3e62db1044de81f479951e83863a662235e5.png";
+---
+<div class="flex flex-col gap-[8px] items-center w-[333px]">
+  <div class="bg-[var(--keycolor,#deca37)] border-2 border-[var(--bgcolor,#ffffeb)] border-solid flex flex-col items-center justify-center px-[10px] py-[4px] rounded-[5px] w-full">
+    <p class="leading-normal text-[0px] text-black text-center whitespace-nowrap">
+      <span class="font-[family-name:var(--mainfont,'Zen_Kaku_Gothic_New:Regular',sans-serif)] leading-normal text-[20px]">月永理絵</span><span class="font-[family-name:var(--mainfont,'Zen_Kaku_Gothic_New:Regular',sans-serif)] leading-normal text-[12px]">（ライター、編集者）</span>
+    </p>
+  </div>
+  <div class="border-2 border-[var(--keycolor,#deca37)] border-solid flex items-center justify-center p-[8px] shrink-0 size-[140px]">
+    <div class="relative rounded-[10px] shrink-0 size-[120px]">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[10px] size-full" src={imgPhoto}/>
+    </div>
+  </div>
+  <div class="bg-[var(--heading,#fefefe)] flex items-center justify-center rounded-[2px]">
+    <p class="font-['Londrina_Solid',sans-serif] leading-normal text-[18px] text-[color:var(--keycolor,#deca37)] text-center"># comments</p>
+  </div>
+  <div class="border-2 border-[var(--keycolor,#deca37)] border-solid flex flex-col items-center px-[20px] py-[10px] relative rounded-[12px] w-full card-textbox">
+    <div class="leading-[1.5] relative text-[13px] text-black text-outline-white w-full">
+      <p class="mb-0">ふたりの女の子たちが過ごす小さな世界。と思っていると、フレームの外からいろんなものたちが飛び込んできた。</p>
+      <p class="mb-0">&nbsp;</p>
+      <p class="mb-0">今日食べたもの、大好きな猫のこと、とりとめのない会話から、彼女たちが生きてきた場所、この環境を取り巻く歴史や政治が溢れ出し、ぐぐっと世界が広がっていく。</p>
+      <p class="mb-0">&nbsp;</p>
+      <p>これは、今を生きるひとりの映画作家による意見表明だ。この途方もなく大きな世界のなかで生きる私たちの小さな世界。カメラはそれを映すのだと。</p>
+    </div>
+  </div>
+  <div class="flex flex-col items-center w-full">
+    <div class="h-0 relative w-full">
+      <div class="absolute inset-[-1px_0_0_0]">
+        <img alt="" class="block max-w-none size-full" src={imgLine12}/>
+      </div>
+    </div>
+    <div class="relative rounded-[10px] shrink-0 size-[36px]">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[10px] size-full" src={imgPhoto}/>
+    </div>
+  </div>
+</div>

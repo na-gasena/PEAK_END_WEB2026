@@ -1,0 +1,136 @@
+---
+const imgBaloon321       = "/images/6ab00b55e7c7404755878e88e5ce3e0c74a8502e.png";
+const imgDinosaurMask321 = "/images/dff7605a223c507682e092d6a86ac48e82a4d373.png";
+const imgGecko321        = "/images/71d6865eb9fbfaf3bd682a860c274494ccbb8daa.png";
+const imgCamera321       = "/images/e98cb3824e9f2d8d23625308dd076f5cf123f10c.png";
+const imgButterfly321    = "/images/4baebbceba8c7b6ee5c733ef7958f2f1fa32f43d.png";
+const imgTrain321        = "/images/b153113e76e8b4660144c1ae5f32e4f494ffc409.png";
+const imgFire321         = "/images/d9a3299565bb4e5f5d9eccb07c97a1cfd110176d.png";
+const imgTitlePeakend1   = "/images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png";
+
+/*
+  コンテンツ高さ計算:
+  top-[80px] header + 8 separators×32px + 7 buttons×57px + 7×mb[-9px] + pb-[9px]
+  = 80 + 256 + 399 - 63 + 9 = 681px
+*/
+---
+
+<div class="bg-[#deca37] relative w-full h-[681px] overflow-hidden rounded-[20px]" data-name="iPhone 16 - Menu">
+
+  <!-- メニューリスト -->
+  <div class="absolute flex flex-col items-start left-0 pb-[9px] top-[80px]">
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-main');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBaloon321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0">
+        <span class="text-[#dd6bab]">P</span><span class="tracking-[0.05em]">ICKS</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-trailer');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgDinosaurMask321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0">
+        <span>TRAIL</span><span class="text-[#dd6bab]">E</span><span>R</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-about');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGecko321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0 tracking-[0.05em]">
+        <span class="text-[#dd6bab]">A</span><span>BOUT</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-kotoba');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgCamera321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0 tracking-[0.05em]">
+        <span class="text-[#dd6bab]">K</span><span>OTOBA</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-theaters');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgButterfly321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0">
+        <span>TH</span><span class="text-[#dd6bab]">E</span><span>ATERS</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-sns');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgTrain321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0 tracking-[0.05em]">
+        <span>S</span><span class="text-[#dd6bab]">N</span><span>S</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+    <button type="button"
+      onclick="document.getElementById('modal-menu').close(); window.scrollToSection('section-credits');"
+      class="flex gap-[25px] items-center mb-[-9px] bg-transparent border-none cursor-pointer p-0 w-full outline-none focus:outline-none hover:opacity-80 active:opacity-60">
+      <div class="h-[57px] w-[24px] shrink-0"></div>
+      <div class="relative size-[32px] shrink-0">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgFire321}/>
+      </div>
+      <p class="font-['Londrina_Solid'] text-[48px] leading-none whitespace-nowrap m-0">
+        <span>CRE</span><span class="text-[#dd6bab]">D</span><span>ITS</span>
+      </p>
+    </button>
+
+    <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
+  </div>
+
+  <!-- PEAK END ロゴ: filter:drop-shadow でアルファ形状に沿ったシャドウ -->
+  <div class="absolute h-[69px] left-[10px] top-[8px] w-[216px]">
+    <img alt="PEAK END"
+      class="absolute inset-0 max-w-none object-cover pointer-events-none size-full drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+      src={imgTitlePeakend1}/>
+  </div>
+
+  <!-- × 閉じるボタン -->
+  <button
+    type="button"
+    onclick="document.getElementById('modal-menu').close();"
+    class="absolute right-[14px] top-[14px] z-50 size-[36px] flex items-center justify-center bg-black/20 rounded-full border-none cursor-pointer hover:bg-black/30 active:bg-black/40 transition-colors"
+    aria-label="閉じる">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-[20px]" aria-hidden="true">
+      <line x1="5" y1="5" x2="19" y2="19" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="19" y1="5" x2="5" y2="19" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+</div>
