@@ -36,6 +36,20 @@ body.modal-open {
   overflow: hidden;
 }
 
+/* Desktop phone frame: hide inner scrollbar + lock scroll when modal opens */
+@media (min-width: 520px) {
+  #mobile-outer {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #mobile-outer::-webkit-scrollbar {
+    display: none;
+  }
+  body.modal-open #mobile-outer {
+    overflow-y: hidden !important;
+  }
+}
+
 /* テキストボックス背景: タイリングで繰り返す（伸びても scale せず repeat） */
 .card-textbox {
   background-image: url('/images/5b4f3e62db1044de81f479951e83863a662235e5.png');

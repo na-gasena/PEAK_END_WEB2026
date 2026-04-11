@@ -52,7 +52,7 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
   </div>
 
   <!-- Responsive Mobile Scale Wrapper -->
-  <div id="mobile-outer" class="w-full overflow-hidden">
+  <div id="mobile-outer" class="w-full overflow-x-hidden">
     <main id="mobile-main" class="relative bg-[#ffffeb] flex flex-col shadow-2xl shrink-0" style="width:393px; transform-origin:top left;">
       <div id="section-main"><Main /></div>
       <div id="section-trailer"><Trailer /></div>
@@ -94,55 +94,211 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
   <dialog id="modal-27" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none open:flex items-center justify-center"><Comp27 /><button type="button" class="absolute top-4 right-4 z-50 p-2 text-[24px]" onclick="this.closest('dialog').close()">&times;</button></dialog>
 
   <script>
+    import rough from 'roughjs';
+
     // Responsive scale: fit 393px design to viewport width
     const DESIGN_WIDTH = 393;
+    const DESKTOP_BREAKPOINT = 520; // phone-frame (inner-scroll) mode threshold
+    const FRAME_R = 36;             // border-radius of the phone frame
+    const FRAME_PAD = 10;           // SVG overlay extends this many px beyond the frame
+
+    /** Build an SVG rounded-rect path string */
+    function rrPath(x, y, w, h, r) {
+      const cr = Math.min(r, w / 2, h / 2);
+      return `M${x+cr},${y} L${x+w-cr},${y} Q${x+w},${y} ${x+w},${y+cr}`
+           + ` L${x+w},${y+h-cr} Q${x+w},${y+h} ${x+w-cr},${y+h}`
+           + ` L${x+cr},${y+h} Q${x},${y+h} ${x},${y+h-cr}`
+           + ` L${x},${y+cr} Q${x},${y} ${x+cr},${y} Z`;
+    }
+
+    /** Draw / redraw the rough double-border SVG overlay */
+    function updateFrameOverlay(leftOffset) {
+      const P = FRAME_PAD;
+      const frameH = window.innerHeight - 48; // frame height (top:24 + bottom:24)
+      const svgW = DESIGN_WIDTH + P * 2;
+      const svgH = frameH + P * 2;
+
+      let svg = document.getElementById('frame-overlay');
+      if (!svg) {
+        svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.id = 'frame-overlay';
+        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        svg.style.cssText = 'pointer-events:none; position:fixed; z-index:99;';
+        document.body.appendChild(svg);
+      }
+      svg.style.display = '';
+      svg.style.left    = (leftOffset - P) + 'px';
+      svg.style.top     = (24 - P) + 'px';
+      svg.setAttribute('width',  svgW);
+      svg.setAttribute('height', svgH);
+      svg.style.width   = svgW + 'px';
+      svg.style.height  = svgH + 'px';
+      svg.innerHTML = '';
+
+      const rc = rough.svg(svg);
+
+      // Outer border — outside the frame, on the yellow background
+      svg.appendChild(rc.path(
+        rrPath(3, 3, svgW - 6, svgH - 6, FRAME_R + P - 3),
+        {
+          stroke: 'rgba(255,255,255,0.55)',
+          strokeWidth: 2.2,
+          roughness: 2.4,
+          bowing: 1.0,
+          fill: 'none',
+          disableMultiStroke: false,
+        }
+      ));
+
+      // Inner border — just inside the frame edge, on top of content
+      svg.appendChild(rc.path(
+        rrPath(P + 5, P + 5, DESIGN_WIDTH - 10, frameH - 10, FRAME_R - 5),
+        {
+          stroke: 'rgba(255,255,255,0.88)',
+          strokeWidth: 1.6,
+          roughness: 1.8,
+          bowing: 0.6,
+          fill: 'none',
+          disableMultiStroke: false,
+        }
+      ));
+    }
+
+    /** Hide the overlay when not in desktop mode */
+    function hideFrameOverlay() {
+      const svg = document.getElementById('frame-overlay');
+      if (svg) svg.style.display = 'none';
+    }
+
     function applyMobileScale() {
       const outer = document.getElementById('mobile-outer');
-      const main = document.getElementById('mobile-main');
+      const main  = document.getElementById('mobile-main');
       const header = document.getElementById('sticky-header');
       if (!outer || !main) return;
-      const vw = outer.clientWidth;
-      if (vw >= DESIGN_WIDTH) {
-        // Desktop: show at 1:1, center with auto margin
-        main.style.transform = 'none';
-        main.style.marginLeft = 'auto';
-        main.style.marginRight = 'auto';
-        outer.style.height = '';
-        // ヘッダーも中央に合わせる
+      // Always read the true viewport width (outer may be position:fixed + 393px wide)
+      const vw = document.documentElement.clientWidth;
+
+      if (vw >= DESKTOP_BREAKPOINT) {
+        // ── Desktop: fixed phone-frame with inner scroll ────
+        const leftOffset = Math.max(0, Math.floor((vw - DESIGN_WIDTH) / 2));
+
+        document.body.style.overflow        = 'hidden';
+        document.body.style.backgroundColor = '#deca37';
+
+        outer.style.position     = 'fixed';
+        outer.style.top          = '24px';
+        outer.style.bottom       = '24px';
+        outer.style.left         = leftOffset + 'px';
+        outer.style.width        = DESIGN_WIDTH + 'px';
+        outer.style.height       = '';
+        outer.style.overflowY    = 'auto';
+        outer.style.overflowX    = 'hidden';
+        outer.style.borderRadius = '36px';
+        outer.style.boxShadow    = '';
+        outer.style.paddingTop   = '';
+        outer.style.paddingBottom = '';
+
+        main.style.transform    = 'none';
+        main.style.marginLeft   = '0';
+        main.style.marginRight  = '0';
+        main.style.borderRadius = '';
+        main.style.overflow     = '';
+        main.style.boxShadow    = '';
+
         if (header) {
           header.style.transform = 'none';
+          header.style.left      = leftOffset + 'px';
+          header.style.top       = '20px'; // clear the double-border lines
+        }
+
+        updateFrameOverlay(leftOffset);
+
+      } else if (vw >= DESIGN_WIDTH) {
+        // ── Narrow: 1:1 centered, normal page scroll ────────
+        document.body.style.overflow        = '';
+        document.body.style.backgroundColor = '';
+
+        outer.style.position     = '';
+        outer.style.top          = '';
+        outer.style.bottom       = '';
+        outer.style.left         = '';
+        outer.style.width        = '';
+        outer.style.height       = '';
+        outer.style.overflowY    = '';
+        outer.style.overflowX    = '';
+        outer.style.borderRadius = '';
+        outer.style.boxShadow    = '';
+        outer.style.paddingTop   = '';
+        outer.style.paddingBottom = '';
+
+        main.style.transform    = 'none';
+        main.style.marginLeft   = 'auto';
+        main.style.marginRight  = 'auto';
+        main.style.borderRadius = '';
+        main.style.overflow     = '';
+        main.style.boxShadow    = '';
+
+        if (header) {
+          header.style.transform = 'none';
+          header.style.top       = '';
           header.style.left = Math.max(0, Math.floor((vw - DESIGN_WIDTH) / 2)) + 'px';
         }
+
+        hideFrameOverlay();
+
       } else {
-        // Mobile: scale from top-left to fill edge-to-edge
+        // ── Mobile: scale to fit, normal page scroll ─────────
+        document.body.style.overflow        = '';
+        document.body.style.backgroundColor = '';
+
+        outer.style.position     = '';
+        outer.style.top          = '';
+        outer.style.bottom       = '';
+        outer.style.left         = '';
+        outer.style.width        = '';
+        outer.style.overflowY    = '';
+        outer.style.overflowX    = '';
+        outer.style.borderRadius = '';
+        outer.style.boxShadow    = '';
+        outer.style.paddingTop   = '';
+        outer.style.paddingBottom = '';
+
         const scale = vw / DESIGN_WIDTH;
-        main.style.transform = `scale(${scale})`;
-        main.style.marginLeft = '0';
-        main.style.marginRight = '0';
-        // Collapse outer height to match scaled content
-        outer.style.height = (main.scrollHeight * scale) + 'px';
-        // ヘッダーも同じ倍率でスケール
+        main.style.transform    = `scale(${scale})`;
+        main.style.marginLeft   = '0';
+        main.style.marginRight  = '0';
+        outer.style.height      = (main.scrollHeight * scale) + 'px';
+        main.style.borderRadius = '';
+        main.style.overflow     = '';
+        main.style.boxShadow    = '';
+
         if (header) {
           header.style.transform = `scale(${scale})`;
-          header.style.left = '0';
+          header.style.top       = '';
+          header.style.left      = '0';
         }
+
+        hideFrameOverlay();
       }
     }
     applyMobileScale();
     window.addEventListener('resize', applyMobileScale);
 
-    // Scroll to a section (accounts for scale transform)
+    // Scroll to a section (desktop: inner container / mobile: window)
     window.scrollToSection = function (sectionId) {
       const section = document.getElementById(sectionId);
       if (!section) return;
       const outer = document.getElementById('mobile-outer');
-      const main = document.getElementById('mobile-main');
-      if (!outer || !main) { section.scrollIntoView({ behavior: 'smooth' }); return; }
-      const vw = outer.clientWidth;
-      const scale = vw >= 393 ? 1 : vw / 393;
-      const sectionTop = section.offsetTop * scale;
-      window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+      const main  = document.getElementById('mobile-main');
       document.body.classList.remove('modal-open');
+      if (!outer || !main) { section.scrollIntoView({ behavior: 'smooth' }); return; }
+      const vw = document.documentElement.clientWidth;
+      if (vw >= DESKTOP_BREAKPOINT) {
+        outer.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+      } else {
+        const scale = vw >= DESIGN_WIDTH ? 1 : vw / DESIGN_WIDTH;
+        window.scrollTo({ top: section.offsetTop * scale, behavior: 'smooth' });
+      }
     };
 
     // Utility to open dialogs (+ scroll lock)
@@ -170,7 +326,13 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
       const scrollTopBtn = document.getElementById('scroll-top-btn');
       if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          const vw = document.documentElement.clientWidth;
+          const outer = document.getElementById('mobile-outer');
+          if (vw >= DESKTOP_BREAKPOINT && outer) {
+            outer.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         });
       }
 
