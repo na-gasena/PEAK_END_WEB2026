@@ -25,11 +25,11 @@ const newsItems = [
 ];
 ---
 
-<div class="bg-[var(--bgcolor,#ffffeb)] w-full flex flex-col" data-name="iPhone 16 - NewsList" data-node-id="2093:7135">
+<div class="bg-[var(--bgcolor,#ffffeb)] w-full flex flex-col">
 
   <!-- ヘッダー帯 + ロゴ -->
   <div class="relative h-[69px] w-full bg-[#deca37] shrink-0">
-    <div class="absolute h-[69px] left-0 top-0 w-[216px]" data-name="Title_PEAKEND 1">
+    <div class="absolute h-[69px] left-0 top-0 w-[216px]">
       <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgTitlePeakend1} />
     </div>
   </div>
@@ -44,9 +44,9 @@ const newsItems = [
   <!-- ニュースリスト本体 -->
   <div
     class="flex flex-col gap-[20px] items-stretch w-full px-[20px] pb-[24px]"
-    data-development-annotations="今後、HeadlessCMSにて項目、本文を追加していくと、最新のものが一番上に来るようにして追加されていく。"
-    data-name="NewsList"
-    data-node-id="2037:5859"
+   
+   
+   
   >
     <!-- 上ボーダー -->
     <div class="h-px w-full relative">
@@ -54,7 +54,7 @@ const newsItems = [
     </div>
 
     {newsItems.map((item) => (
-      <div class="flex flex-col w-full" data-name="News">
+      <div class="flex flex-col w-full">
 
         <!-- 日付タグ（右寄せ） -->
         <div class="flex justify-end mb-[4px]">
@@ -69,7 +69,7 @@ const newsItems = [
         <div class="flex gap-[10px] items-start w-full">
 
           <!-- SolaIcon -->
-          <div class="relative shrink-0 size-[42px]" data-name="SolaIcon 2">
+          <div class="relative shrink-0 size-[42px]">
             <img alt="" class="absolute inset-0 object-cover pointer-events-none size-full rounded-full" src={imgSolaIcon2} />
           </div>
 
@@ -85,7 +85,6 @@ const newsItems = [
               type="button"
               class="bg-[#deca37] flex items-center justify-start w-full px-[15px] py-[10px] rounded-[16px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity border-none text-left"
               onclick={`window.openModal('${item.modal}')`}
-              data-interaction-annotations={`タップするとオーバーレイ(${item.modal})`}
             >
               <p class="decoration-solid font-bold text-[13px] text-white underline leading-[1.4] break-words">
                 {item.text}
