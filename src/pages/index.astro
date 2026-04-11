@@ -213,41 +213,8 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
 
         updateFrameOverlay(leftOffset);
 
-      } else if (vw >= DESIGN_WIDTH) {
-        // ── Narrow: 1:1 centered, normal page scroll ────────
-        document.body.style.overflow        = '';
-        document.body.style.backgroundColor = '';
-
-        outer.style.position     = '';
-        outer.style.top          = '';
-        outer.style.bottom       = '';
-        outer.style.left         = '';
-        outer.style.width        = '';
-        outer.style.height       = '';
-        outer.style.overflowY    = '';
-        outer.style.overflowX    = '';
-        outer.style.borderRadius = '';
-        outer.style.boxShadow    = '';
-        outer.style.paddingTop   = '';
-        outer.style.paddingBottom = '';
-
-        main.style.transform    = 'none';
-        main.style.marginLeft   = 'auto';
-        main.style.marginRight  = 'auto';
-        main.style.borderRadius = '';
-        main.style.overflow     = '';
-        main.style.boxShadow    = '';
-
-        if (header) {
-          header.style.transform = 'none';
-          header.style.top       = '';
-          header.style.left = Math.max(0, Math.floor((vw - DESIGN_WIDTH) / 2)) + 'px';
-        }
-
-        hideFrameOverlay();
-
       } else {
-        // ── Mobile: scale to fit, normal page scroll ─────────
+        // ── Mobile: scale to fit viewport width, normal page scroll ──
         document.body.style.overflow        = '';
         document.body.style.backgroundColor = '';
 
@@ -296,7 +263,7 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
       if (vw >= DESKTOP_BREAKPOINT) {
         outer.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
       } else {
-        const scale = vw >= DESIGN_WIDTH ? 1 : vw / DESIGN_WIDTH;
+        const scale = vw / DESIGN_WIDTH;
         window.scrollTo({ top: section.offsetTop * scale, behavior: 'smooth' });
       }
     };

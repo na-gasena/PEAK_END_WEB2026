@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /public/
+
+User-agent: Googlebot-Image
+Disallow: /public/
