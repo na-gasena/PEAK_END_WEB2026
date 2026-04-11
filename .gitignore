@@ -1,6 +1,5 @@
 /*
 !.gitignore
-!/docs/
 !/src/
 !/public/
 !/package.json
