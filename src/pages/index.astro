@@ -39,7 +39,7 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
   <div id="sticky-header" class="fixed top-0 z-[100] h-0" style="width:393px; transform-origin:top left;">
     <div class="absolute left-0 top-[16px] w-[216px] h-[69px]">
       <button id="scroll-top-btn" class="w-full h-full cursor-pointer bg-transparent border-none p-0" aria-label="トップに戻る">
-        <img alt="Header_PEAKEND" class="w-full h-full object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]" src="/images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png"/>
+        <img alt="Header_PEAKEND" class="w-full h-full object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]" src={import.meta.env.BASE_URL + "images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png"}/>
       </button>
     </div>
     <button id="menu-icon-btn" class="absolute right-[17px] top-[35px] size-[32px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity bg-transparent border-none p-0" aria-label="メニューを開く" data-name="MenuIcon">

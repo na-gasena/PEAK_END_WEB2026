@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title = "PEAK END", description = "映画『PEAK END』公式サイト" } = Astro.props;
+const ogImage = `${import.meta.env.SITE ?? ''}${import.meta.env.BASE_URL}images/OGP.png`;
 ---
 
 <!DOCTYPE html>
@@ -16,13 +17,13 @@ const { title = "PEAK END", description = "映画『PEAK END』公式サイト" 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png" />
+    <link rel="icon" type="image/png" href={import.meta.env.BASE_URL + "images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png"} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/images/OGP.png" />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/images/OGP.png" />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
