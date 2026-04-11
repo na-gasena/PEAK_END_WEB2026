@@ -25,6 +25,8 @@ jobs:
         with:
           # npmを使用してビルドを実行
           package-manager: npm
+          # Astro 6が要求するNode.jsのバージョンを指定
+          node-version: 22
 
   deploy:
     needs: build
