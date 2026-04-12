@@ -2,6 +2,7 @@
 @source "../**/*.astro";
 
 :root {
+  color-scheme: only light; /* ダークモード無効化: ブラウザによる強制ダーク上書きも禁止 */
   --font-zen: "Zen Kaku Gothic New", sans-serif;
   --font-londrina: "Londrina Solid", display;
   --font-klee: "Klee One", cursive;

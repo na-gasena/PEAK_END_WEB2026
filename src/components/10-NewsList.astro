@@ -8,18 +8,18 @@ const imgRinProf1      = import.meta.env.BASE_URL + "images/63e4ec37dcc1d366edcc
 // Figmaアノテーション: item1→News1オーバーレイ(modal-11), item2→News2(modal-12), item3→News3(modal-13)
 const newsItems = [
   {
-    date:    "2026年4月9日(木)",
+    date:    "2026年4月13日(月)",
     text:    "Webサイトをリニューアルしました",
     modal:   "modal-11",
   },
   {
     date:    "2026年3月16日（月）",
-    text:    "イメージフォーラム & YouTubeにて「特報」予告(…)",
+    text:    "イメージフォーラム & YouTubeにて「特報」予告篇公開",
     modal:   "modal-12",
   },
   {
     date:    "2026年3月16日（月）",
-    text:    "『PEAK END』 劇場公開決定 Image Forum、出町座 他",
+    text:    "『PEAK END』 劇場公開決定 イメージフォーラム、出町座 他",
     modal:   "modal-13",
   },
 ];
@@ -83,10 +83,10 @@ const newsItems = [
             <!-- タップでNewsページを開くボタン -->
             <button
               type="button"
-              class="bg-[#deca37] flex items-center justify-start w-full px-[15px] py-[10px] rounded-[16px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity border-none text-left"
+              class="news-bubble-btn bg-[#deca37] flex items-center justify-start w-fit max-w-full px-[15px] py-[10px] rounded-[16px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity border-none text-left"
               onclick={`window.openModal('${item.modal}')`}
             >
-              <p class="decoration-solid font-bold text-[13px] text-white underline leading-[1.4] break-words">
+              <p class="decoration-solid font-bold text-[13px] text-white underline leading-[1.4]">
                 {item.text}
               </p>
             </button>
@@ -108,3 +108,36 @@ const newsItems = [
 
   </div>
 </div>
+
+<script>
+  function fitNewsBubbles() {
+    document.querySelectorAll<HTMLElement>('.news-bubble-btn').forEach(btn => {
+      const p = btn.querySelector('p');
+      if (!p || !p.firstChild) return;
+
+      // 幅をリセットして自然なレイアウトで計測
+      btn.style.width = '';
+
+      const range = document.createRange();
+      range.selectNodeContents(p);
+      const rects = Array.from(range.getClientRects());
+      if (rects.length === 0) return;
+
+      // 各行の幅のうち最大値を取得
+      const maxLineWidth = Math.max(...rects.map(r => r.width));
+      const paddingX = 30; // px-[15px] × 2
+      const containerWidth = btn.parentElement?.clientWidth ?? Infinity;
+      btn.style.width = Math.min(Math.ceil(maxLineWidth) + paddingX, containerWidth) + 'px';
+    });
+  }
+
+  // フォント読み込み完了後に計測（カスタムフォントの幅ズレを防ぐ）
+  document.fonts.ready.then(fitNewsBubbles);
+
+  // リサイズ時に再計測（デバウンス付き）
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fitNewsBubbles, 100);
+  });
+</script>

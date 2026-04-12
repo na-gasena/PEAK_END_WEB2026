@@ -7,18 +7,36 @@ const imgButterfly321    = import.meta.env.BASE_URL + "images/4baebbceba8c7b6ee5
 const imgTrain321        = import.meta.env.BASE_URL + "images/b153113e76e8b4660144c1ae5f32e4f494ffc409.png";
 const imgFire321         = import.meta.env.BASE_URL + "images/d9a3299565bb4e5f5d9eccb07c97a1cfd110176d.png";
 const imgTitlePeakend1   = import.meta.env.BASE_URL + "images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png";
-
-/*
-  コンテンツ高さ計算:
-  top-[80px] header + 8 separators×32px + 7 buttons×57px + 7×mb[-9px] + pb-[9px]
-  = 80 + 256 + 399 - 63 + 9 = 681px
-*/
 ---
 
-<div class="bg-[#deca37] relative w-full h-[681px] overflow-hidden rounded-[20px]">
+<div class="bg-[#deca37] w-full h-auto max-h-[100dvh] flex flex-col rounded-[20px]">
+
+  <!-- ヘッダー部: ロゴ + × 閉じるボタン -->
+  <div class="relative h-[80px] shrink-0">
+
+    <!-- PEAK END ロゴ: filter:drop-shadow でアルファ形状に沿ったシャドウ -->
+    <div class="absolute h-[69px] left-[10px] top-[8px] w-[216px]">
+      <img alt="PEAK END"
+        class="absolute inset-0 max-w-none object-cover pointer-events-none size-full drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+        src={imgTitlePeakend1}/>
+    </div>
+
+    <!-- × 閉じるボタン -->
+    <button
+      type="button"
+      onclick="document.getElementById('modal-menu').close();"
+      class="absolute right-[14px] top-[14px] z-50 size-[36px] flex items-center justify-center bg-white/90 rounded-full border-none cursor-pointer shadow hover:bg-white active:bg-white/70 transition-colors"
+      aria-label="閉じる">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-[20px]" aria-hidden="true">
+        <line x1="5" y1="5" x2="19" y2="19" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="19" y1="5" x2="5" y2="19" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+  </div>
 
   <!-- メニューリスト -->
-  <div class="absolute flex flex-col items-start left-0 pb-[9px] top-[80px]">
+  <div class="max-h-[calc(100dvh-80px)] overflow-y-auto flex flex-col items-start pb-[20px]">
 
     <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
     <button type="button"
@@ -113,24 +131,5 @@ const imgTitlePeakend1   = import.meta.env.BASE_URL + "images/18e833807e1fcda84c
 
     <p class="text-[32px] leading-none my-0 w-[393px] whitespace-nowrap overflow-hidden"> - - - - - - - - - - - - - - - - - - </p>
   </div>
-
-  <!-- PEAK END ロゴ: filter:drop-shadow でアルファ形状に沿ったシャドウ -->
-  <div class="absolute h-[69px] left-[10px] top-[8px] w-[216px]">
-    <img alt="PEAK END"
-      class="absolute inset-0 max-w-none object-cover pointer-events-none size-full drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
-      src={imgTitlePeakend1}/>
-  </div>
-
-  <!-- × 閉じるボタン -->
-  <button
-    type="button"
-    onclick="document.getElementById('modal-menu').close();"
-    class="absolute right-[14px] top-[14px] z-50 size-[36px] flex items-center justify-center bg-white/90 rounded-full border-none cursor-pointer shadow hover:bg-white active:bg-white/70 transition-colors"
-    aria-label="閉じる">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-[20px]" aria-hidden="true">
-      <line x1="5" y1="5" x2="19" y2="19" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="19" y1="5" x2="5" y2="19" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-    </svg>
-  </button>
 
 </div>
