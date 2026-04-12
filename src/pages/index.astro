@@ -223,8 +223,8 @@ import Comp27 from '../components/27-MemberDetail-西尾千裕.astro';
         outer.style.bottom       = '';
         outer.style.left         = '';
         outer.style.width        = '';
-        outer.style.overflowY    = '';
-        outer.style.overflowX    = '';
+        outer.style.overflowY    = 'clip'; // clip = はみ出しを切るがスクロールコンテナを作らない
+        outer.style.overflowX    = 'clip'; // overflow-x:hidden のCSS仕様による overflow-y:auto 化を防ぐ
         outer.style.borderRadius = '';
         outer.style.boxShadow    = '';
         outer.style.paddingTop   = '';

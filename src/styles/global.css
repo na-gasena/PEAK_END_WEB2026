@@ -37,6 +37,13 @@ body.modal-open {
   overflow: hidden;
 }
 
+/* Android Chrome のスクロール方向反転時の「一瞬止まる」問題を解消。
+   touch-action: pan-y で縦スクロールのみと明示し、方向再評価の待ち時間をなくす */
+#mobile-outer,
+#mobile-main {
+  touch-action: pan-y;
+}
+
 /* Desktop phone frame: hide inner scrollbar + lock scroll when modal opens */
 @media (min-width: 520px) {
   #mobile-outer {
