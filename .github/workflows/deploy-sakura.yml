@@ -40,13 +40,13 @@ jobs:
           npx tinacms build
           npm run build
 
-      - name: Deploy to Sakura via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy to Sakura via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
         with:
-          server: ${{ secrets.FTP_SERVER }}        # 例: example.sakura.ne.jp（ftp:// やポートは付けない）
+          server: ${{ secrets.FTP_SERVER }}         # 例: boid.sakura.ne.jp（ホスト名だけ）
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps                            # さくらは暗号化接続（FTP over TLS）。平文ftpだと切断される
-          port: 21                                  # FTPS（明示的TLS）は21番
-          local-dir: ./dist/                        # ビルド成果物
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }} # さくらの公開ディレクトリ 例: /home/ユーザー名/www/
+          port: 22                                  # SFTP は 22 番
+          local_path: './dist/*'                    # ビルド成果物（dist の中身）
+          remote_path: ${{ secrets.FTP_REMOTE_DIR }} # さくらの公開ディレクトリ 例: /home/boid/www/
+          sftp_only: true
