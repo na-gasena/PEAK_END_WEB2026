@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title = "PEAK END", description = "映画『PEAK END』公式サイト" } = Astro.props;
+const { title = "映画『PEAK END』 | 公式サイト", description = "映画『PEAK END』公式サイト" } = Astro.props;
 const ogImage = `${import.meta.env.SITE ?? ''}${import.meta.env.BASE_URL}images/OGP.png`;
 const splashLogo    = import.meta.env.BASE_URL + "images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png";
 const splashTexture = import.meta.env.BASE_URL + "images/texture.png";
