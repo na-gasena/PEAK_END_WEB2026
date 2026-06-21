@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "label": "映画.com",
+      "href": "https://eiga.com/movie/105830/",
+      "icon": "/images/47bef2b53c17056bf9ebfa528565751c89d25c97.png"
+    },
+    {
+      "label": "X (Twitter)",
+      "href": "https://x.com/PEAK_END_",
+      "icon": "/images/2a0b7e2c7705210f73b183afb4b434421405f796.png"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/peak__end__/",
+      "icon": "/images/a6132af911c4122aef1a63bc26bbcba558c598fb.png"
+    },
+    {
+      "label": "Filmarks",
+      "href": "https://filmarks.com/movies/123647",
+      "icon": "/images/8d3db474c1a814f8701e89992609a2c3b56bee61.png"
+    }
+  ]
+}

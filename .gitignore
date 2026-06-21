@@ -6,6 +6,10 @@
 !/package-lock.json
 !/astro.config.mjs
 !/.github/
+!/scripts/
+
+# 画像最適化で自動生成される WebP（ビルド時に再生成されるため管理不要）
+/public/images/*.webp
 
 # TinaCMS: 設定ファイルは管理、自動生成物は除外
 !/tina/

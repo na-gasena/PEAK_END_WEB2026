@@ -10,7 +10,9 @@
     "dev": "astro dev --host",
     "cms": "tinacms dev -c \"astro dev --host\"",
     "start": "astro dev --host",
+    "prebuild": "node scripts/optimize-images.mjs",
     "build": "astro build",
+    "postbuild": "node scripts/rewrite-webp.mjs",
     "preview": "astro preview --host",
     "astro": "astro"
   },

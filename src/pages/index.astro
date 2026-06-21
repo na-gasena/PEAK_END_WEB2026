@@ -60,36 +60,44 @@ import { kotobaItems, members } from '../lib/people';
   <dialog id="modal-menu" class="w-full h-full max-w-[393px] m-auto p-0 bg-transparent border-none open:block overflow-hidden">
     <MenuScreen />
   </dialog>
-  <dialog id="modal-10" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:flex items-center justify-center">
-    <div class="relative w-full">
-      <Comp10 />
-      <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+  <dialog id="modal-10" class="w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:block overflow-y-auto overscroll-contain">
+    <div class="min-h-full flex items-center justify-center">
+      <div class="relative w-full">
+        <Comp10 />
+        <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+      </div>
     </div>
   </dialog>
   {/* News 詳細オーバーレイ: news.json の各項目から生成（id は表示順に modal-news-0, 1, ...） */}
   {newsItems.map((item, i) => (
-    <dialog id={`modal-news-${i}`} class="news-detail-modal w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:flex items-center justify-center">
-      <div class="relative w-full">
-        <NewsDetail item={item} />
-        <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+    <dialog id={`modal-news-${i}`} class="news-detail-modal w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:block overflow-y-auto overscroll-contain">
+      <div class="min-h-full flex items-center justify-center">
+        <div class="relative w-full">
+          <NewsDetail item={item} />
+          <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+        </div>
       </div>
     </dialog>
   ))}
   {/* KOTOBA 詳細オーバーレイ: kotoba.json から生成（modal-kotoba-0, 1, ...） */}
   {kotobaItems.map((k, i) => (
-    <dialog id={`modal-kotoba-${i}`} class="person-detail-modal w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:flex items-center justify-center">
-      <div class="relative w-full">
-        <PersonDetail name={k.name} role={k.role} photo={k.photo} body={k.body} tagLabel="# comments" />
-        <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+    <dialog id={`modal-kotoba-${i}`} class="person-detail-modal w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:block overflow-y-auto overscroll-contain">
+      <div class="min-h-full flex items-center justify-center">
+        <div class="relative w-full">
+          <PersonDetail name={k.name} role={k.role} photo={k.photo} body={k.body} tagLabel="# comments" />
+          <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+        </div>
       </div>
     </dialog>
   ))}
   {/* MEMBERS 詳細オーバーレイ: members.json から生成（modal-member-0, 1, ...） */}
   {members.map((m, i) => (
-    <dialog id={`modal-member-${i}`} class="person-detail-modal w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:flex items-center justify-center">
-      <div class="relative w-full">
-        <PersonDetail name={m.name} role={m.roleDetail} photo={m.photo} body={m.body} tagLabel="# members" />
-        <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+    <dialog id={`modal-member-${i}`} class="person-detail-modal w-full h-full max-w-[480px] m-auto p-[20px] bg-transparent border-none backdrop:bg-black/50 open:block overflow-y-auto overscroll-contain">
+      <div class="min-h-full flex items-center justify-center">
+        <div class="relative w-full">
+          <PersonDetail name={m.name} role={m.roleDetail} photo={m.photo} body={m.body} tagLabel="# members" />
+          <button type="button" class="absolute top-2 right-2 z-50 w-[32px] h-[32px] flex items-center justify-center bg-white/90 rounded-full text-[20px] leading-none shadow" onclick="this.closest('dialog').close()">&times;</button>
+        </div>
       </div>
     </dialog>
   ))}

@@ -1,16 +1,15 @@
 ---
-const imgImage12      = import.meta.env.BASE_URL + "images/da2e3b8d96025edbb33affa296eb5d667d8a079b.png";
-const imgComIdSu2WtCoW02 = import.meta.env.BASE_URL + "images/47bef2b53c17056bf9ebfa528565751c89d25c97.png";
-const imgComIdSu2WtCoW3  = import.meta.env.BASE_URL + "images/2a0b7e2c7705210f73b183afb4b434421405f796.png";
-const imgComIdSu2WtCoW4  = import.meta.env.BASE_URL + "images/a6132af911c4122aef1a63bc26bbcba558c598fb.png";
-const imgComIdSu2WtCoW5  = import.meta.env.BASE_URL + "images/8d3db474c1a814f8701e89992609a2c3b56bee61.png";
+// SNSリンクは src/data/sns.json で管理（TinaCMSの /admin から編集可能）
+import sns from "../../data/sns.json";
 
-const icons = [
-  { href: "https://eiga.com/movie/105830/",           src: imgComIdSu2WtCoW02, label: "映画.com" },
-  { href: "https://x.com/PEAK_END_",                  src: imgComIdSu2WtCoW3,  label: "X (Twitter)" },
-  { href: "https://www.instagram.com/peak__end__/",   src: imgComIdSu2WtCoW4,  label: "Instagram" },
-  { href: "https://filmarks.com/movies/123647",       src: imgComIdSu2WtCoW5,  label: "Filmarks" },
-];
+const base = import.meta.env.BASE_URL;
+const imgImage12 = base + "images/da2e3b8d96025edbb33affa296eb5d667d8a079b.png";
+
+const icons = (sns.items as { label: string; href: string; icon?: string }[]).map((i) => ({
+  href: i.href,
+  label: i.label,
+  src: i.icon ? base + i.icon.replace(/^\//, "") : "",
+}));
 ---
 
 <div class="bg-[#ffffeb] relative size-full h-[391px] overflow-hidden">

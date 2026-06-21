@@ -202,6 +202,36 @@ export default defineConfig({
         ],
       },
       {
+        name: "sns",
+        label: "SNS（リンク）",
+        path: "src/data",
+        format: "json",
+        match: { include: "sns" },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          {
+            type: "object",
+            name: "items",
+            label: "SNSリンク",
+            list: true,
+            ui: {
+              itemProps: (item) => ({ label: item?.label || "（新規リンク）" }),
+            },
+            fields: [
+              { type: "string", name: "label", label: "名称（例: Instagram）" },
+              { type: "string", name: "href", label: "リンクURL" },
+              {
+                type: "image",
+                name: "icon",
+                label: "アイコン画像",
+              },
+            ],
+          },
+        ],
+      },
+      {
         name: "trailer",
         label: "TRAILER（予告編）",
         path: "src/data",
