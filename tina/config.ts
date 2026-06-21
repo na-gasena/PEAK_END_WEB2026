@@ -1,14 +1,19 @@
 import { defineConfig } from "tinacms";
 
-// ローカル専用設定（TinaCloud / GitHub 連携なし）。
-// `npm run cms` で起動し、http://localhost:4321/admin から編集できます。
-// 編集内容は src/content/*.json に直接書き込まれ、Astro の dev サーバーが
-// ホットリロードでプレビューに反映します。
+// ローカル / オンライン 両対応の設定。
+// ・ローカル: `npm run cms`（tinacms dev）は常にローカルモード。下記の env が無くても
+//   http://localhost:4321/admin から編集でき、src/data/*.json に直接保存される。
+// ・オンライン: GitHub Actions の `tinacms build` 時に下記 env（TinaCloudの認証情報）が
+//   注入され、TinaCloud 経由で認証＋GitHubへコミットする本番用の管理画面が作られる。
+const branch =
+  process.env.TINA_BRANCH ||
+  process.env.GITHUB_REF_NAME || // GitHub Actions が現在のブランチ名を入れる
+  "main";
+
 export default defineConfig({
-  // ローカルモードでは下記3つは使われないが型として必要
-  branch: "",
-  clientId: "",
-  token: "",
+  branch,
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID || "", // TinaCloudのClient ID（公開値）
+  token: process.env.TINA_TOKEN || "",               // TinaCloudのRead Token（秘匿値）
 
   build: {
     outputFolder: "admin", // public/admin に管理画面を出力 → /admin でアクセス
