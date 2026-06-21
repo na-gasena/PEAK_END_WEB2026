@@ -1,0 +1,62 @@
+---
+// members / kotoba 共通の詳細オーバーレイ（名前+役職・写真・#タグ・本文・フッター）
+import { DEFAULT_PERSON_PHOTO, paragraphs } from "../../lib/people";
+
+interface Props {
+  name: string;
+  role?: string;     // 名前の後ろの小さい役職テキスト
+  photo?: string;
+  tagLabel: string;  // "# members" / "# comments"
+  body?: string;
+}
+const { name, role = "", photo, tagLabel, body = "" } = Astro.props as Props;
+
+const base = import.meta.env.BASE_URL;
+const line12 = base + "images/722be691ab76c9fbc04f5aef3dc97a1053dc16bb.svg";
+const footerIcon = base + "images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png";
+const photoSrc = base + (photo && photo.trim() ? photo : DEFAULT_PERSON_PHOTO).replace(/^\//, "");
+const paras = paragraphs(body);
+---
+
+<div class="bg-[var(--bgcolor,#ffffeb)] w-full rounded-[20px] px-[20px] py-[20px] flex flex-col gap-[8px] items-center">
+
+  <!-- 見出し: 名前(大) + 役職(小) -->
+  <div class="bg-[var(--keycolor,#deca37)] border-2 border-[var(--bgcolor,#ffffeb)] border-solid flex flex-col items-center justify-center px-[12px] py-[6px] rounded-[5px] w-full">
+    <p class="leading-[1.4] text-black text-center">
+      <span class="font-['Zen_Kaku_Gothic_New',sans-serif] font-bold text-[20px]">{name}</span>
+      {role && <span class="font-['Zen_Kaku_Gothic_New',sans-serif] text-[12px]">{role}</span>}
+    </p>
+  </div>
+
+  <!-- 写真: アスペクト比を保ったままフィット（横長でもクロップしない。枠が画像に合わせて広がる） -->
+  <div class="border-2 border-[var(--keycolor,#deca37)] border-solid flex items-center justify-center p-[8px] shrink-0 rounded-[2px]">
+    <img alt={name} class="block rounded-[10px] max-w-[260px] max-h-[150px] w-auto h-auto object-contain pointer-events-none" src={photoSrc} />
+  </div>
+
+  <!-- タグ -->
+  <div class="bg-[var(--heading,#fefefe)] flex items-center justify-center rounded-[2px]">
+    <p class="font-['Londrina_Solid',sans-serif] leading-normal text-[18px] text-[color:var(--keycolor,#deca37)] text-center">{tagLabel}</p>
+  </div>
+
+  <!-- 本文 -->
+  {paras.length > 0 && (
+    <div class="border-2 border-[var(--keycolor,#deca37)] border-solid flex flex-col items-center px-[20px] py-[10px] relative rounded-[12px] w-full card-textbox">
+      <div class="leading-[1.5] relative text-[13px] text-black text-outline-white w-full">
+        {paras.map((p) => <p class="mb-[12px] last:mb-0">{p}</p>)}
+      </div>
+    </div>
+  )}
+
+  <!-- フッター -->
+  <div class="flex flex-col items-center w-full">
+    <div class="h-0 relative w-full">
+      <div class="absolute inset-[-1px_0_0_0]">
+        <img alt="" class="block max-w-none size-full" src={line12} />
+      </div>
+    </div>
+    <div class="relative rounded-[10px] shrink-0 size-[36px] mt-[8px]">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[10px] size-full" src={footerIcon} />
+    </div>
+  </div>
+
+</div>

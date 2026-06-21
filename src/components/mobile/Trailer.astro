@@ -1,10 +1,21 @@
 ---
+// 予告編のYouTube URLは src/data/trailer.json で管理（TinaCMSの /admin から編集可能）
+import trailer from "../../data/trailer.json";
+
+// watch?v= / youtu.be / embed / shorts いずれのURLでも動画IDを取り出して埋め込みURLを作る
+function toEmbed(url: string): string {
+  if (!url) return "";
+  const m = url.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+  const id = m ? m[1] : url.trim(); // 11桁のIDを直接入れてもOK
+  return `https://www.youtube.com/embed/${id}`;
+}
+const embedSrc = toEmbed(trailer.youtubeUrl);
 ---
 <div class="bg-[#ffffeb] relative w-full h-[274px]">
   <div class="-translate-x-1/2 absolute h-[194px] left-1/2 top-[80px] w-[360px]">
     <iframe
       class="absolute inset-0 size-full"
-      src="https://www.youtube.com/embed/lBZiY2sbzI0"
+      src={embedSrc}
       title="PEAK END trailer"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

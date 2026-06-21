@@ -6,3 +6,9 @@
 !/package-lock.json
 !/astro.config.mjs
 !/.github/
+
+# TinaCMS: 設定ファイルは管理、自動生成物は除外
+!/tina/
+/tina/__generated__/
+# Tina がビルドするローカル管理画面（公開サーバーには不要）
+/public/admin/

@@ -1,0 +1,51 @@
+{
+  "items": [
+    {
+      "region": "東京都",
+      "name": "シアター・イメージフォーラム",
+      "date": "2026.6.13",
+      "url": "https://www.imageforum.co.jp/theatre/movies/9347/"
+    },
+    {
+      "region": "京都府",
+      "name": "出町座",
+      "date": "2026.6.26",
+      "url": "https://demachiza.com/movies/19162"
+    },
+    {
+      "region": "大阪府",
+      "name": "シネ・ヌーヴォ",
+      "date": "2026.6.27",
+      "url": "http://www.cinenouveau.com/sakuhin/peakend.html"
+    },
+    {
+      "region": "愛知県",
+      "name": "キネマ・ノイ",
+      "date": "2026.7.4",
+      "url": "https://nk-neu.com/"
+    },
+    {
+      "region": "神奈川県",
+      "name": "横浜シネマリン",
+      "date": "2026.7.11",
+      "url": "https://cinemarine.co.jp/"
+    },
+    {
+      "region": "沖縄県",
+      "name": "桜坂劇場",
+      "date": "2026.7.18",
+      "url": "https://sakura-zaka.com/"
+    },
+    {
+      "region": "山口県",
+      "name": "山口情報芸術センター",
+      "date": "2026.8.29",
+      "url": "https://www.ycam.jp/"
+    },
+    {
+      "region": "…",
+      "name": "…",
+      "date": "順次全国"
+    }
+  ]
+}

@@ -1,28 +1,12 @@
 ---
+// 一覧は src/data/news.json の全件をデータ駆動で表示（トップと同じソース）
+import { newsItems, formatDate, hasDetail } from "../lib/news";
+
 const imgPolygon3      = import.meta.env.BASE_URL + "images/fca6b6ef35474a8da905954f4c0b236dfdcb97b6.svg";
 const imgLine12        = import.meta.env.BASE_URL + "images/722be691ab76c9fbc04f5aef3dc97a1053dc16bb.svg";
 const imgTitlePeakend1 = import.meta.env.BASE_URL + "images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png";
 const imgSolaIcon2     = import.meta.env.BASE_URL + "images/9a0db4737d90db51fd68f7cb1eb5ed75b077fc51.png";
 const imgRinProf1      = import.meta.env.BASE_URL + "images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png";
-
-// Figmaアノテーション: item1→News1オーバーレイ(modal-11), item2→News2(modal-12), item3→News3(modal-13)
-const newsItems = [
-  {
-    date:    "2026年4月13日(月)",
-    text:    "Webサイトをリニューアルしました",
-    modal:   "modal-11",
-  },
-  {
-    date:    "2026年3月16日（月）",
-    text:    "イメージフォーラム & YouTubeにて「特報」予告篇公開",
-    modal:   "modal-12",
-  },
-  {
-    date:    "2026年3月16日（月）",
-    text:    "『PEAK END』 劇場公開決定 イメージフォーラム、出町座 他",
-    modal:   "modal-13",
-  },
-];
 ---
 
 <div class="bg-[var(--bgcolor,#ffffeb)] w-full flex flex-col rounded-[20px] overflow-hidden">
@@ -53,14 +37,14 @@ const newsItems = [
       <img alt="" class="block w-full h-full object-cover" src={imgLine12} />
     </div>
 
-    {newsItems.map((item) => (
+    {newsItems.map((item, i) => (
       <div class="flex flex-col w-full">
 
         <!-- 日付タグ（右寄せ） -->
         <div class="flex justify-end mb-[4px]">
           <div class="bg-[#deca37] flex items-center justify-center px-[16px] py-[2px] rounded-[4px]">
             <p class="font-medium leading-normal text-[12px] text-white whitespace-nowrap">
-              {item.date}
+              {formatDate(item.date)}
             </p>
           </div>
         </div>
@@ -80,14 +64,14 @@ const newsItems = [
               <img alt="" class="absolute top-[0px] left-[2px] w-full h-full rotate-[-52deg] object-contain" src={imgPolygon3} />
             </div>
 
-            <!-- タップでNewsページを開くボタン -->
+            <!-- タップでNews詳細を開くボタン（本文があるときだけ） -->
             <button
               type="button"
-              class="news-bubble-btn bg-[#deca37] flex items-center justify-start w-fit max-w-full px-[15px] py-[10px] rounded-[16px] cursor-pointer hover:opacity-80 active:opacity-60 transition-opacity border-none text-left"
-              onclick={`window.openModal('${item.modal}')`}
+              class:list={["news-bubble-btn bg-[#deca37] flex items-center justify-start w-fit max-w-full px-[15px] py-[10px] rounded-[16px] transition-opacity border-none text-left", hasDetail(item) ? "cursor-pointer hover:opacity-80 active:opacity-60" : "cursor-default"]}
+              onclick={hasDetail(item) ? `window.openModal('modal-news-${i}')` : undefined}
             >
-              <p class="decoration-solid font-bold text-[13px] text-white underline leading-[1.4]">
-                {item.text}
+              <p class:list={["decoration-solid font-bold text-[13px] text-white leading-[1.4]", hasDetail(item) ? "underline" : ""]}>
+                {item.title}
               </p>
             </button>
           </div>

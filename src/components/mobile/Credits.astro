@@ -1,10 +1,14 @@
 ---
-const imgLine10 = import.meta.env.BASE_URL + "images/d022fcd1d982914490ea0bf4ff6b1ecc4b1d7e0e.svg";
-const imgRinProf1 = import.meta.env.BASE_URL + "images/5dfbf4105817b96213ca384b903643d993d6c352.png";
-const imgRinProf2 = import.meta.env.BASE_URL + "images/798c760295b7477d67c180f0207dde6e02e2fc3b.png";
-const imgRinProf3 = import.meta.env.BASE_URL + "images/8ffd3d0d428dccee377aff2ec8b1f7b6da6334ac.png";
-const imgRinProf4 = import.meta.env.BASE_URL + "images/867091a57362fee5872cc94cb1eea5a3b47ed103.png";
-const imgRinProf5 = import.meta.env.BASE_URL + "images/a330662bbbebed137aec2812be137b4ee9bb4267.png";
+// メンバーは src/data/members.json で管理（TinaCMSの /admin から編集可能）
+import { members, DEFAULT_PERSON_PHOTO } from "../../lib/people";
+
+const base = import.meta.env.BASE_URL;
+const imgLine10 = base + "images/d022fcd1d982914490ea0bf4ff6b1ecc4b1d7e0e.svg";
+
+const memberCards = members.map((m) => ({
+  ...m,
+  photoSrc: base + (m.photo && m.photo.trim() ? m.photo : DEFAULT_PERSON_PHOTO).replace(/^\//, ""),
+}));
 ---
 <div class="bg-[#ffffeb] relative size-full h-[1102px] overflow-hidden">
   <div class="-translate-x-1/2 absolute content-stretch flex flex-col gap-[12px] items-center left-1/2 top-[68px] w-full px-[16px]">
@@ -25,62 +29,20 @@ const imgRinProf5 = import.meta.env.BASE_URL + "images/a330662bbbebed137aec2812b
   <div class="-translate-x-1/2 absolute font-['Shippori_Antique_B1:Regular',sans-serif] h-[74px] leading-[0] left-[calc(50%+0.5px)] not-italic text-[#deca37] text-[10px] text-center top-[1029px] w-[252px] whitespace-pre-wrap"><p class="leading-[normal] mb-0">&nbsp;</p><p class="leading-[normal] mb-0"> boid/VOICE OF GHOST </p><p class="leading-[normal] mb-0"> </p><p class="leading-[normal]">©PEAK END</p></div>
   <div class="absolute bg-[#deca37] h-[675px] left-0 rounded-[9px] top-[346px] w-[393px]"></div>
   <div class="-translate-x-1/2 absolute bg-[var(--heading,#fefefe)] content-stretch flex items-center justify-center left-[calc(50%+0.5px)] px-[4px] py-[5px] top-[359px]"><div class="flex flex-col font-['Londrina_Solid',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#deca37] text-[20px] text-center whitespace-nowrap"><p class="leading-[77.45000457763672%]"># members</p></div></div>
-  <div class="-translate-x-1/2 absolute grid-cols-[repeat(2,fit-content(100%))] grid-rows-[repeat(3,fit-content(100%))] inline-grid left-[calc(50%+0.5px)] top-[407px] border-t border-l border-white">
-    <div data-member-card class="col-1 content-stretch flex flex-col gap-[10px] items-start p-[9px] relative row-1 shrink-0 size-[196px] cursor-pointer group hover:brightness-90 active:opacity-70 transition-[filter,opacity] select-none" onclick="openModal('modal-23')">
-      <div class="absolute border-b border-r border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
-        <div data-member-photo class="relative shrink-0 size-[170px]"><img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRinProf1}/></div>
+  <div class="-translate-x-1/2 absolute grid grid-cols-[repeat(2,196px)] inline-grid left-[calc(50%+0.5px)] top-[407px] border-t border-l border-white">
+    {memberCards.map((m, i) => (
+      <div data-member-card class="content-stretch flex flex-col gap-[10px] items-start p-[9px] relative shrink-0 size-[196px] cursor-pointer group hover:brightness-90 active:opacity-70 transition-[filter,opacity] select-none" onclick={`openModal('modal-member-${i}')`}>
+        <div class="absolute border-b border-r border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
+          <div data-member-photo class="relative shrink-0 size-[170px]"><img alt={m.name} class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={m.photoSrc}/></div>
+        </div>
+        <div class="absolute top-[6px] right-[6px] bg-[#deca37] rounded-full size-[20px] flex items-center justify-center z-10 pointer-events-none group-hover:scale-125 transition-transform">
+          <svg viewBox="0 0 12 12" class="size-[10px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 L10 2 M5 2 H10 V7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px] relative shrink-0">
+          <div class="font-['Shippori_Antique_B1',sans-serif] leading-[0] not-italic relative shrink-0 text-[#deca37] text-[12px] whitespace-nowrap"><p class="leading-[normal] mb-0 whitespace-pre">{m.roleCard} : </p><p class="leading-[normal] whitespace-pre">{m.name}</p></div>
+        </div>
       </div>
-      <div class="absolute top-[6px] right-[6px] bg-[#deca37] rounded-full size-[20px] flex items-center justify-center z-10 pointer-events-none group-hover:scale-125 transition-transform">
-        <svg viewBox="0 0 12 12" class="size-[10px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 L10 2 M5 2 H10 V7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px] relative shrink-0">
-        <div class="font-['Shippori_Antique_B1',sans-serif] leading-[0] not-italic relative shrink-0 text-[#deca37] text-[12px] whitespace-nowrap"><p class="leading-[normal] mb-0 whitespace-pre">Director / Actor : </p><p class="leading-[normal] whitespace-pre">シン・チェリン</p></div>
-      </div>
-    </div>
-    <div data-member-card class="col-2 content-stretch flex flex-col gap-[10px] items-start p-[9px] relative row-1 shrink-0 size-[196px] cursor-pointer group hover:brightness-90 active:opacity-70 transition-[filter,opacity] select-none" onclick="openModal('modal-26')">
-      <div class="absolute border-b border-r border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
-        <div data-member-photo class="relative shrink-0 size-[170px]"><img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRinProf2}/></div>
-      </div>
-      <div class="absolute top-[6px] right-[6px] bg-[#deca37] rounded-full size-[20px] flex items-center justify-center z-10 pointer-events-none group-hover:scale-125 transition-transform">
-        <svg viewBox="0 0 12 12" class="size-[10px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 L10 2 M5 2 H10 V7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px] relative shrink-0">
-        <div class="font-['Shippori_Antique_B1',sans-serif] leading-[0] not-italic relative shrink-0 text-[#deca37] text-[12px] whitespace-nowrap"><p class="leading-[normal] mb-0 whitespace-pre">Actor : </p><p class="leading-[normal] whitespace-pre">伊丹 そら</p></div>
-      </div>
-    </div>
-    <div data-member-card class="col-1 content-stretch flex flex-col gap-[10px] items-start p-[9px] relative row-2 shrink-0 size-[196px] cursor-pointer group hover:brightness-90 active:opacity-70 transition-[filter,opacity] select-none" onclick="openModal('modal-24')">
-      <div class="absolute border-b border-r border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
-        <div data-member-photo class="relative shrink-0 size-[170px]"><img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRinProf3}/></div>
-      </div>
-      <div class="absolute top-[6px] right-[6px] bg-[#deca37] rounded-full size-[20px] flex items-center justify-center z-10 pointer-events-none group-hover:scale-125 transition-transform">
-        <svg viewBox="0 0 12 12" class="size-[10px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 L10 2 M5 2 H10 V7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px] relative shrink-0">
-        <div class="font-['Shippori_Antique_B1',sans-serif] leading-[0] not-italic relative shrink-0 text-[#deca37] text-[12px] whitespace-nowrap"><p class="leading-[normal] mb-0 whitespace-pre">Cinematography : </p><p class="leading-[normal] whitespace-pre">清水歩夢</p></div>
-      </div>
-    </div>
-    <div data-member-card class="col-2 content-stretch flex flex-col gap-[10px] items-start p-[9px] relative row-2 shrink-0 size-[196px] cursor-pointer group hover:brightness-90 active:opacity-70 transition-[filter,opacity] select-none" onclick="openModal('modal-27')">
-      <div class="absolute border-b border-r border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
-        <div data-member-photo class="relative shrink-0 size-[170px]"><img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRinProf4}/></div>
-      </div>
-      <div class="absolute top-[6px] right-[6px] bg-[#deca37] rounded-full size-[20px] flex items-center justify-center z-10 pointer-events-none group-hover:scale-125 transition-transform">
-        <svg viewBox="0 0 12 12" class="size-[10px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 L10 2 M5 2 H10 V7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px] relative shrink-0">
-        <div class="font-['Shippori_Antique_B1',sans-serif] leading-[0] not-italic relative shrink-0 text-[#deca37] text-[12px] whitespace-nowrap"><p class="leading-[normal] mb-0 whitespace-pre">Editor : </p><p class="leading-[normal] whitespace-pre">西尾千裕</p></div>
-      </div>
-    </div>
-    <div data-member-card class="col-1 content-stretch flex flex-col gap-[10px] items-start p-[9px] relative row-3 shrink-0 size-[196px] cursor-pointer group hover:brightness-90 active:opacity-70 transition-[filter,opacity] select-none" onclick="openModal('modal-25')">
-      <div class="absolute border-b border-r border-white content-stretch flex items-start left-0 p-[13px] size-[196px] top-0">
-        <div data-member-photo class="relative shrink-0 size-[170px]"><img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRinProf5}/></div>
-      </div>
-      <div class="absolute top-[6px] right-[6px] bg-[#deca37] rounded-full size-[20px] flex items-center justify-center z-10 pointer-events-none group-hover:scale-125 transition-transform">
-        <svg viewBox="0 0 12 12" class="size-[10px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10 L10 2 M5 2 H10 V7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="bg-[var(--heading,#fefefe)] content-stretch flex items-center px-[4px] relative shrink-0">
-        <div class="font-['Shippori_Antique_B1',sans-serif] leading-[0] not-italic relative shrink-0 text-[#deca37] text-[12px] whitespace-nowrap"><p class="leading-[normal] mb-0">Sound Recording:</p><p class="leading-[normal]">キム・スビン</p></div>
-      </div>
-    </div>
+    ))}
   </div>
   <div class="absolute content-stretch flex flex-col gap-[10px] h-[38px] items-start left-[18px] py-[6px] top-[7px] w-[382px]" style="overflow: hidden;">
     <div class="absolute bg-[rgba(217,107,157,0.6)] h-[25px] w-[275px]" style="left: 107px; top: 6px;"></div>

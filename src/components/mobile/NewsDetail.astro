@@ -1,0 +1,76 @@
+---
+import { formatDate, thumbnailOf, renderBody, type NewsItem } from "../../lib/news";
+
+const { item } = Astro.props as { item: NewsItem };
+const base = import.meta.env.BASE_URL;
+
+const logo = base + "images/18e833807e1fcda84c8bb77a6ea04a9c9bccdbdf.png";
+const line12 = base + "images/722be691ab76c9fbc04f5aef3dc97a1053dc16bb.svg";
+const rinIcon = base + "images/63e4ec37dcc1d366edcc53ce9a5ae7d1dc8009b3.png";
+
+// サムネイル: 未指定ならデフォルト画像。"/images/xxx" でも "images/xxx" でも base 付きに正規化。
+const thumb = base + thumbnailOf(item).replace(/^\//, "");
+
+// 本文（Markdown → HTML）。画像・リンク・装飾に対応。
+const bodyHtml = renderBody(item.body, base);
+---
+
+<!-- 一覧（+ and more）と同じカード枠で囲む -->
+<div class="bg-[var(--bgcolor,#ffffeb)] w-full flex flex-col rounded-[20px] overflow-hidden">
+
+  <!-- ヘッダー帯 + ロゴ（一覧と統一） -->
+  <div class="relative h-[69px] w-full bg-[#deca37] shrink-0">
+    <div class="absolute h-[69px] left-0 top-0 w-[216px]">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={logo} />
+    </div>
+  </div>
+
+  <!-- 本文エリア -->
+  <div class="flex flex-col gap-[8px] items-center w-full px-[20px] pt-[12px] pb-[20px]">
+
+  <!-- 見出し -->
+  <div class="bg-[var(--keycolor,#deca37)] border-2 border-[var(--bgcolor,#ffffeb)] border-solid flex flex-col items-center justify-center px-[14px] py-[9px] rounded-[5px] w-full">
+    <p class="font-['Zen_Kaku_Gothic_New',sans-serif] font-bold leading-[1.5] text-[19px] text-black text-center tracking-[0.02em]">{item.title}</p>
+  </div>
+
+  <!-- 日付 -->
+  <div class="bg-[#deca37] flex items-center justify-center px-[16px] py-[2px] rounded-[2px] w-full">
+    <p class="font-medium leading-normal text-[12px] text-white text-center whitespace-nowrap">{formatDate(item.date)}</p>
+  </div>
+
+  <!-- サムネイル（未指定ならデフォルト画像） -->
+  <div class="border-2 border-[var(--keycolor,#deca37)] border-solid flex items-center justify-center p-[8px] shrink-0 size-[140px]">
+    <div class="relative rounded-[10px] shrink-0 size-[120px]">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[10px] size-full" src={thumb} />
+    </div>
+  </div>
+
+  <!-- タグ -->
+  <div class="bg-[var(--heading,#fefefe)] flex items-center justify-center rounded-[2px]">
+    <p class="font-['Londrina_Solid',sans-serif] leading-normal text-[18px] text-[color:var(--keycolor,#deca37)] text-center"># news</p>
+  </div>
+
+  <!-- 本文（Markdown: 画像・リンク・装飾OK） -->
+  {bodyHtml && (
+    <div class="border-2 border-[var(--keycolor,#deca37)] border-solid flex flex-col items-center px-[20px] py-[10px] relative rounded-[12px] w-full card-textbox">
+      <div
+        class="leading-[1.5] relative text-[13px] text-black text-outline-white w-full [&_p]:mb-[12px] [&_p:last-child]:mb-0 [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-2 [&_a]:break-words [&_img]:block [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-[8px] [&_img]:my-[12px] [&_img]:mx-auto [&_ul]:list-disc [&_ul]:pl-[20px] [&_ul]:mb-[12px] [&_ol]:list-decimal [&_ol]:pl-[20px] [&_ol]:mb-[12px] [&_li]:mb-[4px] [&_strong]:font-bold [&_em]:italic [&_h1]:font-bold [&_h1]:text-[16px] [&_h1]:my-[8px] [&_h2]:font-bold [&_h2]:text-[16px] [&_h2]:my-[8px] [&_h3]:font-bold [&_h3]:text-[14px] [&_h3]:my-[6px] [&_blockquote]:border-l-2 [&_blockquote]:border-[var(--keycolor,#deca37)] [&_blockquote]:pl-[12px] [&_blockquote]:my-[10px] [&_blockquote]:opacity-90"
+        set:html={bodyHtml}
+      />
+    </div>
+  )}
+
+  <!-- フッター -->
+  <div class="flex flex-col items-center w-full">
+    <div class="h-0 relative w-full">
+      <div class="absolute inset-[-1px_0_0_0]">
+        <img alt="" class="block max-w-none size-full" src={line12} />
+      </div>
+    </div>
+    <div class="relative rounded-[10px] shrink-0 size-[36px] mt-[8px]">
+      <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[10px] size-full" src={rinIcon} />
+    </div>
+  </div>
+
+  </div><!-- /本文エリア -->
+</div>

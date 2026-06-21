@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev --host",
+    "cms": "tinacms dev -c \"astro dev --host\"",
     "start": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview --host",
@@ -18,13 +19,19 @@
   "license": "ISC",
   "type": "module",
   "overrides": {
-    "vite": "^7"
+    "vite": "^7",
+    "@tinacms/cli": {
+      "vite": "4.5.9"
+    }
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "@tinacms/cli": "^2.5.1",
     "astro": "^6.1.5",
+    "marked": "^18.0.5",
     "roughjs": "^4.6.6",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "tinacms": "^3.9.3"
   },
   "devDependencies": {
     "puppeteer": "^24.40.0"
