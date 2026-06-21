@@ -43,8 +43,10 @@ jobs:
       - name: Deploy to Sakura via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}        # 例: ftp.example.sakura.ne.jp
+          server: ${{ secrets.FTP_SERVER }}        # 例: example.sakura.ne.jp（ftp:// やポートは付けない）
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps                            # さくらは暗号化接続（FTP over TLS）。平文ftpだと切断される
+          port: 21                                  # FTPS（明示的TLS）は21番
           local-dir: ./dist/                        # ビルド成果物
           server-dir: ${{ secrets.FTP_REMOTE_DIR }} # さくらの公開ディレクトリ 例: /home/ユーザー名/www/
